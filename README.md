@@ -12,7 +12,7 @@ to improve effieceny and accuarcy of companies.
 
 # General Info #
 
-(shiftlogo.png)
+![Scheme](shiftlogo.png)
 
 # Technologies #
 
