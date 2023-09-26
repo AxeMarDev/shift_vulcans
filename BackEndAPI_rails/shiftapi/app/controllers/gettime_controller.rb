@@ -1,8 +1,17 @@
 class GettimeController < ApplicationController
   def index
 
-    employee = Employee.find_by(name: params[:name])
-    render json: employee.clockin
+    if employee = Employee.find_by(name: params[:name])
+
+      if employee.password == params[:password]
+        render json: employee.clockin
+      else
+        render json: "error accessing #{:name}"
+      end
+    else
+      render json: "error accessing #{:name}"
+    end
+
 
   end
 end
