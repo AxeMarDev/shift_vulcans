@@ -30,12 +30,6 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-
-
-
   # ADDING COLUMN TO TABLE
   # rails g migration AddAgeToEmployees age:integer // will add age to Employees
   # rails db:migrate

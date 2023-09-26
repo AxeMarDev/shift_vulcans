@@ -1,5 +1,6 @@
 class UpdatenameController < ApplicationController
   def update
+
     input = params[:name]
     input.sub!("-"," ")
     if (employee = Employee.find_by(name: input))
