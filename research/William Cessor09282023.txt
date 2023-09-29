@@ -1,0 +1,28 @@
+William Cessor
+9/28/2023 - 10:41pm
+--------------------Learning JavaScript----------------------
+
+https://www.youtube.com/watch?v=W6NZfCO5SIk | 48m 15s
+
+-----------------------Welcome Page--------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="welcome-message">
+        <!-- The welcome message will be displayed here -->
+    </div>
+    <script>
+        // JavaScript code to display the welcome message
+        document.addEventListener("DOMContentLoaded", function() {
+            const welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.innerHTML = "<h1>Hello, CS3398!</h1>";
+            welcomeMessage.style.textAlign = "center";
+        });
+    </script>
+</body>
+</html>
