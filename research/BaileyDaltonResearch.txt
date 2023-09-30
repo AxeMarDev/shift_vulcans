@@ -1,0 +1,6 @@
+- Downloaded and installed ruby on rails as well as determined how to set up a basic database.
+-- https://www.youtube.com/playlist?list=PLm8ctt9NhMNV75T9WYIrA6m9I_uw7vS56
+-- Created a bundle install to locally install all of the needed gems.
+-- Attempted to use mySQL2 but couldn't find a working model so decided on using SQLite.
+- https://www.youtube.com/playlist?list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ
+-- This is the source for my React Native knowledge.
