@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_165005) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_01_200619) do
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "adminname"
+    t.string "adminpassword"
+  end
+
   create_table "employee_infos", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -19,6 +27,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_165005) do
     t.string "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "attempts"
+    t.integer "companies_id", null: false
+    t.index ["companies_id"], name: "index_employee_infos_on_companies_id"
   end
 
+  add_foreign_key "employee_infos", "companies", column: "companies_id"
 end
