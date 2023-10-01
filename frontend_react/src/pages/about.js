@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
     return (
         <div>
-            <h1>
+
             # Shift #
             
 # Description #
@@ -32,7 +32,7 @@ to improve effieceny and accuarcy of companies.
 *User profile: This feature will be the first implementation to our app. 
 It will be intended for both employees and employers as a way to store
 personal information stored by the company
-            </h1>
+
         </div>
     );
 };

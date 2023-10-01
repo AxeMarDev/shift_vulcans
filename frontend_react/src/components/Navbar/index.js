@@ -6,22 +6,21 @@ import { Nav, NavLink, NavMenu,Link }
 const Navbar = () => {
     return (
         <>
-            <Nav>
-                <NavMenu>
+            <div class={"navbarMenu"}>
                     <NavLink to ="./">
                      <img src= "./shiftlogo.png" height ="75%" width = "75%" />
                      </NavLink>
                     <NavLink to="/about" activeStyle>
-                        About
+                        <p>Employees</p>
                     </NavLink>
                     <NavLink to="/admin" activeStyle>
-                        Admin
+                        <p>Settings</p>
                     </NavLink>
                     <NavLink to="/login" activeStyle>
-                        Login
+                        <p>Login</p>
                     </NavLink>
-                </NavMenu>
-            </Nav>
+                </div>
+
         </>
     );
 };

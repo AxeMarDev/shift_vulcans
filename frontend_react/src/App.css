@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align: left;
+  padding: 1rem;
 }
 
 .App-logo {
@@ -14,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rebeccapurple;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -42,4 +43,43 @@
   border-radius: 50%;
   overflow: hidden;
   margin-top: -6px;
+}
+
+.employeePanelItem {
+  background-color: #282c34;
+}
+.loginform{
+  display: flex;
+  flex-direction: column;
+}
+.loginfield{
+  width: 15rem;
+  height: 2rem;
+}
+
+.consoleroot{
+  width: auto;
+}
+.navbarMenu{
+  padding: 1rem;
+  width: 20rem;
+
+}
+.navbarRoot{
+  background-color: #262626;
+  width: 20rem;
+  height: 100vh;
+
+}
+.router{
+  width: auto;
+  display: flex;
+  background-color: #171717;
+}
+h1,p{
+  color: white;
+}
+p{
+  padding: 0;
+  margin: 0.2rem;
 }
