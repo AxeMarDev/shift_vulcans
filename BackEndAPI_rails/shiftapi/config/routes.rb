@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   # curl --header "Content-Type: application/json" --request PATCH --data '{"updatename":"Axell Martinez"}' http://localhost:3000/updatename/Axell-M
 
 
-
+  # task to do// figure out how to connect company table to employee
+  # fix migrations for <name,bio,clockin> for employee
 
   # ADDING COLUMN TO TABLE
   # rails g migration AddAgeToEmployees age:integer // will add age to Employees
