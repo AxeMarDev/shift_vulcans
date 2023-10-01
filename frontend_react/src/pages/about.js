@@ -1,5 +1,11 @@
-# Shift #
-
+import React from "react";
+ 
+const About = () => {
+    return (
+        <div>
+            <h1>
+            # Shift #
+            
 # Description #
 The team members collaborating on this project are Austin Pace,
 Axell Martinez, Bailey Dalton, William Cessor, and Michael Boynton.
@@ -26,3 +32,9 @@ to improve effieceny and accuarcy of companies.
 *User profile: This feature will be the first implementation to our app. 
 It will be intended for both employees and employers as a way to store
 personal information stored by the company
+            </h1>
+        </div>
+    );
+};
+ 
+export default About;
