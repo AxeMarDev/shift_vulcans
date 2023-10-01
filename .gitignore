@@ -53,3 +53,4 @@ Thumbs.db
 /tmp/
 /db/*.sqlite3
 /public/system/
+shiftapi/tmp/
