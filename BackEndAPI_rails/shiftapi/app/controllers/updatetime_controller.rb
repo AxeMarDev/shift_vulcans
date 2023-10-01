@@ -2,7 +2,7 @@ class UpdatetimeController < ApplicationController
   def update
 
     # we will check if our table of employees holds a employee by name passed in request
-    if employee = Employee.find_by(name: params[:name])
+    if (employee = EmployeeInfo.find_by(name: params[:name]))
 
       # if we find one, then we will see if we can access this employee with the passed password
       if employee.password == params[:password]

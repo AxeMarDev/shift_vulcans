@@ -10,23 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_062707) do
-  create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_10_01_165005) do
+  create_table "employee_infos", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_companies_on_name", unique: true
-  end
-
-  create_table "employees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "bio"
-    t.boolean "clockin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "username"
     t.string "password"
-    t.bigint "company_id", null: false
-    t.index ["company_id"], name: "index_employees_on_company_id"
+    t.boolean "clockin"
+    t.string "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -48,3 +48,11 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Ignore temporary files and directories (Updated by William 09/30/2023)
+/log/
+/tmp/
+/db/*.sqlite3
+/public/system/
+shiftapi/tmp/
+
+BackEndAPI_rails/untitled/

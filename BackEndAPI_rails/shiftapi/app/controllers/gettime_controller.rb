@@ -1,7 +1,7 @@
 class GettimeController < ApplicationController
   def index
 
-    if employee = Employee.find_by(name: params[:name])
+    if (employee = EmployeeInfo.find_by(name: params[:name]))
 
       if employee.password == params[:password]
         render json: employee.clockin

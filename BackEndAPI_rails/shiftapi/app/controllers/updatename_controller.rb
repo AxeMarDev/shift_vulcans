@@ -3,7 +3,7 @@ class UpdatenameController < ApplicationController
 
     input = params[:name]
     input.sub!("-"," ")
-    if (employee = Employee.find_by(name: input))
+    if (employee = EmployeeInfo.find_by(name: input))
       employee_old_name = employee.name
 
       if employee.update(name: params[:updatename])

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # request template
   # curl --header "Content-Type: application/json" --request PATCH  --data '{"password":"2002068", "name":"user1"}' http://localhost:3000/updatetime
 
-
   # required username and password
   # Will be basic route to get the time of a certain employee
   resources :gettime,only: [:index]
@@ -27,6 +26,11 @@ Rails.application.routes.draw do
   # curl --header "Content-Type: application/json" --request PATCH --data '{"updatename":"Axell Martinez"}' http://localhost:3000/updatename/Axell
   # curl --header "Content-Type: application/json" --request PATCH --data '{"updatename":"Axell Martinez"}' http://localhost:3000/updatename/Axell-M
 
+  # routes pending
+  # Plan: webview login page will be served by react front end server
+  # When user reaches for login resource, it will be sent by react ti backend api
+  resources :login, only: [:index]
+  resources :logout, only: [:update]
 
   # task to do// figure out how to connect company table to employee
   # fix migrations for <name,bio,clockin> for employee
