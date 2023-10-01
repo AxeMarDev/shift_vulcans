@@ -17,12 +17,18 @@ function App() {
                     <Navbar />
                 </div>
                 <div class={"consoleroot"}>
-                    <Routes>
-                        <Route exact path='/' element={<Home />} />
-                        <Route path='/about' element={<About />} />
-                        <Route path='/admin' element={<Admin />} />
-                        <Route path='/login' element={<Login />} />
-                    </Routes>
+                    <div class={"consoleDisplay"}>
+
+                        <Routes>
+                            <Route exact path='/' element={<Home />} />
+                            <Route path='/about' element={<About />} />
+                            <Route path='/admin' element={<Admin />} />
+                            <Route path='/login' element={<Login />} />
+                        </Routes>
+
+
+                    </div>
+
                 </div>
             </div>
 
