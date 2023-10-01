@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       name: "",
       bio: "",
+      username: "",
       items: [],
       DataisLoaded: false,
 
@@ -21,6 +22,9 @@ class App extends React.Component {
   handleChange(event) {
     this.setState({name: event.target.value});
   }
+  handleChange(event) {
+    this.setState({name: event.target.value});
+}
 
 
 
@@ -31,9 +35,14 @@ class App extends React.Component {
   }
 
   getEmployees() {
-    fetch("http://localhost:3000/employees", {
+    fetch("http://localhost:3000/companyemployees", {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json'},// Add any other headers if needed },
+      headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            adminname: "user1",
+            adminpassword: "2002068",
+            companyname: "axellelectric",
+        })
     })
         .then((response) => response.json())
         .then((json) => {
@@ -72,8 +81,13 @@ class App extends React.Component {
 
   render() {
     const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded) return <div>
-      <h1> Pleses wait some time.... </h1> </div> ;
+    if (!DataisLoaded) return <div class="loginform">
+        <h1> Welcome to Shift </h1>
+        <input class="loginfield" name="Company name" value={this.state.name}  onChange={this.handleChange}/>
+        <input  class="loginfield" name="username" value={this.state.username}  onChange={this.handleChange}/>
+        <input  class="loginfield" name="password" value={this.state.name}  onChange={this.handleChange}/>
+        <button  class="loginfield" onClick={() => this.getEmployees()}>  log in</button>
+    </div> ;
 
     return (
         <div className = "App">
