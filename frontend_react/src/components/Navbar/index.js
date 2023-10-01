@@ -8,17 +8,21 @@ const Navbar = () => {
         <>
             <div class={"navbarMenu"}>
                     <NavLink to ="./">
-                     <img src= "./shiftlogo.png" height ="75%" width = "75%" />
-                     </NavLink>
-                    <NavLink to="/about" activeStyle>
-                        <p>Employees</p>
+                        <div className={"loginHolder"}>
+                            <div className={"loginWithinHolder"}>
+                                <p className={"userFullName"}> <strong>No user logged in</strong>  </p>
+                                <p className={"userUsername"}> please click to login </p>
+                            </div>
+                        </div>
                     </NavLink>
-                    <NavLink to="/admin" activeStyle>
-                        <p>Settings</p>
-                    </NavLink>
-                    <NavLink to="/login" activeStyle>
-                        <p>Login</p>
-                    </NavLink>
+                    <div className={"menuButtonDic"}>
+                        <NavLink to="/about" activeStyle>
+                            <p>Employees</p>
+                        </NavLink>
+                        <NavLink to="/admin" activeStyle>
+                            <p>Settings</p>
+                        </NavLink>
+                    </div>
                 </div>
 
         </>
