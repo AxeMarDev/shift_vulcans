@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
+import {queries} from "@testing-library/react";
 
+function adminDash({user}){
+    return(
+        <div className={"consoleDisplayOuter"}>
+            <div className={"consoleDisplayInner2"}>
+                <p className={"welcomeText"}> welcome to {user.company} dashboard</p>
+            </div>
+
+        </div>
+
+    )
+
+}
 function Home( {user, handleLoginTrue}) {
 
     // Function to handle changes in the input field
     const [userName, setInputValue] = useState('');
-    const [UserPass, setInputValue2] = useState('');
+    const [userPass, setInputValue2] = useState('');
     const [company, setInputValue3] = useState('');
     const [loginType, setInputValue4] = useState('');
     const handleUserNameChange = (event) => {
@@ -26,9 +39,12 @@ function Home( {user, handleLoginTrue}) {
     const handleLogin = () => {
         // Construct the request data
 
+        console.log(userName)
+        console.log(userPass)
+        console.log(company)
         const queryParams = new URLSearchParams({
             adminname: userName,
-            adminpass: UserPass,
+            adminpassword: userPass,
             companyname: company,
             // Add more parameters as needed
         });
@@ -78,7 +94,7 @@ function Home( {user, handleLoginTrue}) {
                             className={"enterfield"}
                             type="text"
                             id="myInput"
-                            value={UserPass}
+                            value={userPass}
                             onChange={handlePassWordChange}
                         />
                         <p className={"formlabel"}>company</p>
@@ -105,9 +121,10 @@ function Home( {user, handleLoginTrue}) {
 
         );
     } else {
-        return <div>error</div>
+        return adminDash( {user})
     }
 };
 
- 
+
+
 export default Home;

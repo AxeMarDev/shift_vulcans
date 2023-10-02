@@ -1,40 +1,72 @@
 import React from "react";
+import  { useEffect } from 'react';
  
-const About = () => {
+function employeeCard(employee){
     return (
-        <div>
-
-            # Shift #
-            
-# Description #
-The team members collaborating on this project are Austin Pace,
-Axell Martinez, Bailey Dalton, William Cessor, and Michael Boynton.
-We are creating a mobile application to track employee attendance and will
-include other features such as ability to set own schedule, see your 
-paycheck in advance and a user profile to keep track of employees.
-This application is meant for small buisness owners as a way 
-to track hours worked of employees. We are creating this application
-to improve effieceny and accuarcy of companies.
-
-# General Info #
-
-![Scheme](shiftlogo.png)
-
-# Technologies #
-
-*React Native,
-*CSS,
-*JavaScript,
-*Firebase
-*Ruby on rails
-
-# Features #
-*User profile: This feature will be the first implementation to our app. 
-It will be intended for both employees and employers as a way to store
-personal information stored by the company
-
+        <div className={"consoleDisplayOuter"}>
+            <div className={"employeelistinner"}>
+                <p className={"welcomeText"}> {employee.name}</p>
+                <p className={"welcomeText"}> {String(employee.clockin)}</p>
+            </div>
         </div>
-    );
-};
- 
+    )
+
+}
+function About({user,employees, handleEmployeeList}){
+
+    // curl --header "Content-Type: application/json"  --request GET --data '{"adminname":"user1", "adminpassword":"2002068", "companyname":"axellelectric" }'  http://localhost:3000/companyemployees
+    const handleEmployeelist = (user) => {
+
+        const queryParams = new URLSearchParams({
+            adminname: user.username,
+            adminpassword: user.password,
+            companyname: user.company,
+        });
+        const url = `http://localhost:3000/companyemployees?${queryParams}`;
+        fetch(url, {
+            method: 'GET', // Change the method if needed (e.g., POST)
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then((json) => {
+                // Handle the API response data here
+                console.log(json);
+                handleEmployeeList( json)
+
+                // here
+                // You can also perform any other actions or state updates based on the response
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    };
+
+    // Use the useEffect hook to run the function when the component mounts
+    useEffect(() => {
+        handleEmployeelist(user);
+        // The empty dependency array [] ensures that this effect runs only once when the component mounts
+    }, []); // <- Empty dependency ar
+
+    return(
+        <>
+            <div className={"consoleDisplayOuter"}>
+                <div className={"consoleDisplayInner2"}>
+                    <p className={"welcomeText"}> welcome to dashboard</p>
+                </div>
+            </div>
+            {
+                employees.items.map((item) => (
+                    employeeCard(item)
+                ))
+            }
+
+
+        </>
+    )
+
+}
 export default About;

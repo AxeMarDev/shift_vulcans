@@ -1,7 +1,13 @@
 class CompanyController < ApplicationController
   def index
+
     if ( company_row = Company.find_by(name: params[:companyname]))
-      render json: company_row
+      if company_row.adminname == params[:adminname] && company_row.adminpassword == params[:adminpassword]
+        render json: company_row
+      else
+        render json: "can not find"
+      end
+
     else
       render json: "company not found"
     end

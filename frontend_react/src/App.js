@@ -10,6 +10,11 @@ import Login from './pages/login';
 import { useState } from 'react';
 
 function App() {
+    // this will keep a state-driven array of employee
+    const [employees ={
+        items: [],
+    }, setEmployees] = useState();
+
     const [user={
         username: "no user active",
         password: "no pass word",
@@ -17,14 +22,21 @@ function App() {
         isLoggedIn: false,
     }, setUser] = useState();
 
+    const handleEmployeeList = (data)=>{
+        setEmployees({
+            items: data,
+        });
+    }
     // Function to update isLoggedIn state
     const handleLoginTrue = (data) => {
         // Perform your login logic here and update the user state accordingly
 
-        setUser({ isLoggedIn: true,
+        console.log(data.adminpassword)
+        setUser({
+            isLoggedIn: true,
             username: data.adminname,
-            password: data.adminpass,
-            company: data.name
+            password: data.adminpassword,
+            company: data.name,
         });
 
     };
@@ -38,7 +50,7 @@ function App() {
                 <div class={"consoleroot"}>
                     <Routes>
                         <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
-                        <Route path='/about' element={<About />} />
+                        <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
                         <Route path='/admin' element={<Admin />} />
                         <Route path='/login' element={<Login />} />
                     </Routes>
