@@ -6,11 +6,11 @@ function employeeCard(employee){
         <div className={"consoleDisplayOuter"}>
             <div className={"employeelistinner"}>
                 <p className={"welcomeText"}> {employee.name}</p>
-                <p className={"welcomeText"}> {String(employee.clockin)}</p>
+                <p className={"welcomeText"}> clocked in: {String(employee.clockin)}</p>
+                <p className={"welcomeText"}> employee id: {String(employee.id)}</p>
             </div>
         </div>
     )
-
 }
 function About({user,employees, handleEmployeeList}){
 
@@ -33,7 +33,42 @@ function About({user,employees, handleEmployeeList}){
             .then((json) => {
                 // Handle the API response data here
                 console.log(json);
+
                 handleEmployeeList( json)
+
+                // here
+                // You can also perform any other actions or state updates based on the response
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    };
+
+    const handleAddEmployee = (user, employees) => {
+
+        const queryParams = new URLSearchParams({
+            adminname: user.username,
+            adminpassword: user.password,
+            companyname: user.company,
+            employeename: "axell",
+            username: "axell1",
+            password: "0000",
+
+        });
+        const url = `http://localhost:3000/companyemployees?${queryParams}`;
+        fetch(url, {
+            method: 'POST', // Change the method if needed (e.g., POST)
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then((json) => {
+                // Handle the API response data here
+                handleEmployeelist(user)
+
 
                 // here
                 // You can also perform any other actions or state updates based on the response
@@ -56,6 +91,7 @@ function About({user,employees, handleEmployeeList}){
             <div className={"consoleDisplayOuter"}>
                 <div className={"consoleDisplayInner2"}>
                     <p className={"welcomeText"}> welcome to dashboard</p>
+                    <button onClick={()=>handleAddEmployee(user, employees)}> Add employee </button>
                 </div>
             </div>
             {
