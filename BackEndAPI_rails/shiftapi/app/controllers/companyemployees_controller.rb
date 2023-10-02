@@ -25,6 +25,7 @@ class CompanyemployeesController < ApplicationController
         company.employee_infos.create( name: params[:employeename],
                                   username: params[:employeename],
                                   password: params[:employeepass],
+                                  userImage: params[:userImage],
                                   clockin: false,
                                   bio: "empty")
 

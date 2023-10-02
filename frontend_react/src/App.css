@@ -159,12 +159,19 @@ p{
 .formlabel{
   padding-left: 1rem;
 }
+
 .employeelistinner{
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   height: 10rem;
   border-radius: 10px;
   background-color: #262626;
+}
+.employeeinfoStack{
+  flex-direction: column;
+}
+.image1{
+  width: 5rem;
+  height: 5rem;
 }

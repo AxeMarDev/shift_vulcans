@@ -39,9 +39,6 @@ function Home( {user, handleLoginTrue}) {
     const handleLogin = () => {
         // Construct the request data
 
-        console.log(userName)
-        console.log(userPass)
-        console.log(company)
         const queryParams = new URLSearchParams({
             adminname: userName,
             adminpassword: userPass,
@@ -59,7 +56,7 @@ function Home( {user, handleLoginTrue}) {
             .then((response)=> response.json() )
             .then((data) => {
                 // Handle the API response data here
-                console.log(data);
+               // console.log(data);
                 handleLoginTrue( data)
 
                 // here

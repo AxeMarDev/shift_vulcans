@@ -15,6 +15,7 @@ function App() {
         items: [],
     }, setEmployees] = useState();
 
+    // this will keep a state-driven information of admin user
     const [user={
         username: "no user active",
         password: "no pass word",
@@ -22,17 +23,19 @@ function App() {
         isLoggedIn: false,
     }, setUser] = useState();
 
-
+    // this will update the state driver employee list information. Without this it would not update views
     const handleEmployeeList = (data)=>{
         setEmployees({
             items: data,
         });
     }
-    // Function to update isLoggedIn state
+
+    // this will update the state drive for loggin admin in . Without this it would not update views
     const handleLoginTrue = (data) => {
         // Perform your login logic here and update the user state accordingly
 
-        console.log(data.adminpassword)
+        //console.log(data.adminpassword);
+
         setUser({
             isLoggedIn: true,
             username: data.adminname,
