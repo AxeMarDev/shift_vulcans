@@ -1,13 +1,15 @@
 import React from "react";
 import  { useEffect } from 'react';
  
-function employeeCard(employee){
+function employeeCard(user,employee,handleDestoryEmployee){
     return (
         <div className={"consoleDisplayOuter"}>
             <div className={"employeelistinner"}>
                 <p className={"welcomeText"}> {employee.name}</p>
                 <p className={"welcomeText"}> clocked in: {String(employee.clockin)}</p>
                 <p className={"welcomeText"}> employee id: {String(employee.id)}</p>
+                <p className={"welcomeText"}> password id: {String(employee.password)}</p>
+                <button onClick={()=>handleDestoryEmployee(user, String(employee.id) )}> delete </button>
             </div>
         </div>
     )
@@ -45,7 +47,6 @@ function About({user,employees, handleEmployeeList}){
                 console.error(error);
             });
     };
-
     const handleAddEmployee = (user, employees) => {
 
         const queryParams = new URLSearchParams({
@@ -53,8 +54,7 @@ function About({user,employees, handleEmployeeList}){
             adminpassword: user.password,
             companyname: user.company,
             employeename: "axell",
-            username: "axell1",
-            password: "0000",
+            employeepass: "0000",
 
         });
         const url = `http://localhost:3000/companyemployees?${queryParams}`;
@@ -65,13 +65,39 @@ function About({user,employees, handleEmployeeList}){
             },
         })
             .then((response)=> response.json() )
-            .then((json) => {
+            .then(() => {
                 // Handle the API response data here
                 handleEmployeelist(user)
 
 
                 // here
                 // You can also perform any other actions or state updates based on the response
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    };
+    const handleDestoryEmployee = (user, id) => {
+        console.log("companyname in")
+        console.log(id)
+        const queryParams = new URLSearchParams({
+            adminname: user.username,
+            adminpassword: user.password,
+            companyname: user.company,
+        });
+        const url = `http://localhost:3000/companyemployees/${id}?${queryParams}`;
+        fetch(url, {
+            method: 'DELETE', // Change the method if needed (e.g., POST)
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then(() => {
+                // Handle the API response data here
+                handleEmployeelist(user)
             })
 
             .catch((error) => {
@@ -96,11 +122,9 @@ function About({user,employees, handleEmployeeList}){
             </div>
             {
                 employees.items.map((item) => (
-                    employeeCard(item)
+                    employeeCard(user,item, handleDestoryEmployee)
                 ))
             }
-
-
         </>
     )
 
