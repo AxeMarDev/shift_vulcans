@@ -110,7 +110,7 @@ function Home( {user, handleLoginTrue}) {
                             value={loginType}
                             onChange={handleLoginTypeChange}
                         />
-                        <button onClick={handleLogin}> login</button>
+                        <button className={"buttonLogin"} onClick={handleLogin}> login</button>
                     </div>
                 </div>
 

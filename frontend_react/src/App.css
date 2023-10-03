@@ -120,7 +120,7 @@ p{
 .consoleDisplayInner,.consoleDisplayInner2{
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   background-color: #171717;
   height: 5rem;
@@ -144,7 +144,7 @@ p{
   justify-content: center;
   height: 40rem;
 }
-.enterfield{
+.enterfield, .buttonLogin{
   border-radius: 10px;
   margin-left: 1rem;
   margin-top: 1rem;
@@ -175,3 +175,11 @@ p{
   width: 5rem;
   height: 5rem;
 }
+
+.buttonLogin{
+  margin-top: 3rem;
+  background-color: #424242;
+
+}
+
+

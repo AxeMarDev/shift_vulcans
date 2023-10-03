@@ -34,7 +34,7 @@ function App() {
     const handleLoginTrue = (data) => {
         // Perform your login logic here and update the user state accordingly
 
-        //console.log(data.adminpassword);
+        //npmconsole.log(data.adminpassword);
 
         setUser({
             isLoggedIn: true,
