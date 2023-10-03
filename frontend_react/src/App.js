@@ -1,107 +1,68 @@
-
-import React from "react";
+import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route }
+    from 'react-router-dom';
+import Home from './pages';
+import About from './pages/about';
+import Admin from './pages/admin';
+import Login from './pages/login';
+import { useState } from 'react';
 
-class App extends React.Component {
+function App() {
+    // this will keep a state-driven array of employee
+    const [employees ={
+        items: [],
+    }, setEmployees] = useState();
 
-  // Constructor
-  constructor(props) {
-    super(props);
+    // this will keep a state-driven information of admin user
+    const [user={
+        username: "no user active",
+        password: "no pass word",
+        company: "nocompany",
+        isLoggedIn: false,
+    }, setUser] = useState();
 
-    this.state = {
-      name: "",
-      bio: "",
-      items: [],
-      DataisLoaded: false,
+    // this will update the state driver employee list information. Without this it would not update views
+    const handleEmployeeList = (data)=>{
+        setEmployees({
+            items: data,
+        });
+    }
+
+    // this will update the state drive for loggin admin in . Without this it would not update views
+    const handleLoginTrue = (data) => {
+        // Perform your login logic here and update the user state accordingly
+
+        //npmconsole.log(data.adminpassword);
+
+        setUser({
+            isLoggedIn: true,
+            username: data.adminname,
+            password: data.adminpassword,
+            company: data.name,
+        });
 
     };
-    this.handleChange = this.handleChange.bind(this);
-
-  }
-  handleChange(event) {
-    this.setState({name: event.target.value});
-  }
-
-
-
-  // ComponentDidMount is used to
-  // execute the code
-  componentDidMount() {
-    this.getEmployees()
-  }
-
-  getEmployees() {
-    fetch("http://localhost:3000/employees", {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json'},// Add any other headers if needed },
-    })
-        .then((response) => response.json())
-        .then((json) => {
-          // Handle the data, e.g., update the component's state
-          this.setState({
-            items: json,
-            DataisLoaded: true
-          });
-        })
-        .catch((error) => {
-          // Handle any errors here
-          console.error(error);
-        });
-  }
-//curl --header "Content-Type: application/json" --request POST --data '{"name":"user1", "bio":"worker", "clockin":"false", "password":"2002068"}' http://localhost:3000/employees
-  createEmployee(){
-
-    fetch("http://localhost:3000/employees", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},// Add any other headers if needed },
-      body: JSON.stringify({
-        name: this.state.name,
-        bio: "worker",
-        clockin: false,
-        password: "2002068",
-        company_id: 0
-      }),
-    })
-        .then((response) => response.json())
-        .then(() => { this.getEmployees(); })
-        .catch((error) => {
-          // Handle any errors here
-          console.error(error);
-        });
-  }
-
-  render() {
-    const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded) return <div>
-      <h1> Pleses wait some time.... </h1> </div> ;
 
     return (
-        <div className = "App">
+        <Router>
+            <div class={"router"}>
+                <div class={"navbarRoot"}>
+                    <Navbar user={user} />
+                </div>
+                <div class={"consoleroot"}>
+                    <Routes>
+                        <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
+                        <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
+                        <Route path='/admin' element={<Admin />} />
+                        <Route path='/login' element={<Login />} />
+                    </Routes>
+                </div>
+            </div>
 
-          <h1> Admin panel </h1>  {
-          items.map((item) => (
-              this.cardEmployee(item)
-          ))
-        }
-          <input name="name" value={this.state.name}  onChange={this.handleChange}/>
-          <input name="bio" value={this.state.bio}/>
-
-          <button onClick={() => this.createEmployee()}>create employee</button>
-        </div>
+        </Router>
     );
-  }
-
-  cardEmployee( item ) {
-    return(
-        <div class="employeePanelItem">
-          <h2> Name: {item.name} </h2>
-          <p> ID  = {item.id} </p>
-          <p> status  = {String(item.clockin)}  </p>
-
-        </div>
-    );
-  }
-
 }
 
 export default App;

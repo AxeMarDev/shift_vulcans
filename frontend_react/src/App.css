@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  text-align: left;
+  padding: 1rem;
+  background-color: #171717;
+
 }
 
 .App-logo {
@@ -14,7 +17,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rebeccapurple;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +39,147 @@
     transform: rotate(360deg);
   }
 }
+.logo-image{
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -6px;
+}
+
+.employeePanelItem {
+  background-color: #282c34;
+}
+.loginform{
+  display: flex;
+  flex-direction: column;
+}
+.loginfield{
+  width: 15rem;
+  height: 2rem;
+}
+
+.consoleroot{
+  width: 100%;
+  padding-left: 20rem;
+  height: auto;
+}
+.navbarMenu{
+  padding-top: 1rem;
+  width: 20rem;
+
+}
+.navbarRoot{
+  position: fixed;
+  background-color: #262626;
+  width: 20rem;
+  height: 100vh;
+
+}
+.router{
+  width: auto;
+  display: flex;
+  background-color: #171717;
+}
+h1,p{
+  color: white;
+}
+p{
+  padding: 0;
+  margin: 0.2rem;
+}
+.loginWithinHolder{
+
+  padding-left: 1rem;
+  width: auto;
+}
+.loginHolder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-color: #3B3B3B;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+
+  width: 100%;
+
+  height: 4rem;
+
+}
+.menuButtonDic{
+  padding-top: 3rem;
+}
+.consoleDisplay{
+  width: auto;
+  padding: 1rem;
+}
+.consoleDisplayOuter{
+  padding:1rem;
+}
+.consoleDisplayInner,.consoleDisplayInner2{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #171717;
+  height: 5rem;
+  border-radius: 10px;
+}
+.consoleDisplayInner2{
+  background-color: #262626;
+}
+.welcomeText{
+  padding-left: 1rem;
+}
+.loginform{
+  width: 30rem;
+  border-radius: 10px;
+  background-color: #262626;
+
+}
+.loginFormHolder{
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  height: 40rem;
+}
+.enterfield, .buttonLogin{
+  border-radius: 10px;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  height: 3rem;
+  background-color: #171717;
+  border-style: solid;
+  border-color: #3B3B3B;
+  padding-left: 1rem;
+  color: white;
+}
+.formlabel{
+  padding-left: 1rem;
+}
+
+.employeelistinner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  border-radius: 10px;
+  background-color: #262626;
+}
+.employeeinfoStack{
+  flex-direction: column;
+}
+.image1{
+  width: 5rem;
+  height: 5rem;
+}
+
+.buttonLogin{
+  margin-top: 3rem;
+  background-color: #424242;
+
+}
+
+

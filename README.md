@@ -20,6 +20,7 @@ to improve effieceny and accuarcy of companies.
 *CSS,
 *JavaScript,
 *Firebase
+*Ruby on rails
 
 # Features #
 *User profile: This feature will be the first implementation to our app. 
