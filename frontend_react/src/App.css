@@ -136,7 +136,6 @@ p{
   width: 30rem;
   border-radius: 10px;
   background-color: #262626;
-
 }
 .loginFormHolder{
   padding: 1rem;
@@ -175,11 +174,48 @@ p{
   width: 5rem;
   height: 5rem;
 }
-
-.buttonLogin{
-  margin-top: 3rem;
-  background-color: #424242;
-
+.eye-icon {
+  position: absolute;
+  top: 60%;
+  right: 25px; /* Adjust the right offset as needed */
+  transform: translateY(-50%);
+  
+}
+.eye-icon.active {
+  position: absolute;
+  top: 60%;
+  right: 25px; /* Adjust the right offset as needed */
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 5px blue); /* Apply a blue drop shadow for the glow */
+}
+.password-field {
+  flex-grow: 1;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  height: 3rem; /* Set the height as needed */
+  border-radius: 10px;
+  background-color: #171717;
+  border-style: solid;
+  border-color: #3B3B3B;
+  padding-left: 1rem;
+  color: white;
+}
+.password-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+.forgot-password-link {
+  text-align: center;
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+  margin-top: 10px; /* Adjust margin as needed */
+  display: block; /* Make it a block-level element for proper spacing */
 }
 
-
+.forgot-password-link:hover {
+  text-decoration: underline; /* Add underline on hover */
+}

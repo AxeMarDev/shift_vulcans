@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-//import {queries} from "@testing-library/react";
+import {queries} from "@testing-library/react";
+import eyeballIcon from '../Assets/eye-solid.png'; // Relative import path
 
 function adminDash({user}){
     return(
@@ -28,6 +29,8 @@ function Home( {user, handleLoginTrue}) {
     const [userPass, setInputValue2] = useState('');
     const [company, setInputValue3] = useState('');
     const [loginType, setInputValue4] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleUserNameChange = (event) => {
         setInputValue(event.target.value);
     };
@@ -43,7 +46,16 @@ function Home( {user, handleLoginTrue}) {
         setInputValue4(event.target.value);
 
     };
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
+    const getEyeIconClassName = () => {
+        if (showPassword) {
+          return 'eye-icon active'; // Apply the 'active' class for the glowing effect
+        }
+        return 'eye-icon';
+    };
 
     const handleLogin = () => {
         // Construct the request data
@@ -79,12 +91,80 @@ function Home( {user, handleLoginTrue}) {
     };
     if ( !user.isLoggedIn ) {
 
-        if (!createAccount){
-            return (
-                <>
+        return (
+            <>
+                <div className={"consoleDisplayInner"}>
+                    <p className={"welcomeText"}></p>
+                </div>
+                <div className={"loginFormHolder"}>
+                    <div className={"loginform"}>
+                        <h1 className={"welcomeText"}>Login</h1>
 
-                    <div className={"consoleDisplayInner"}>
-                        <p className={"welcomeText"}></p>
+                        <input
+                            className={"enterfield"}
+                            type="text"
+                            id="myInput"
+                            placeholder="Enter your username"
+                            value={userName}
+                            onChange={handleUserNameChange}
+                        />
+
+                        <div className='password-container'>
+                        <input
+                            className="password-field"
+                            type={showPassword ? "text" : "password"}
+                            id="myInput"
+                            placeholder="Enter your password"
+                            value={userPass}
+                            onChange={handlePassWordChange}
+                        />
+                        <img
+                            src={eyeballIcon}
+                            alt="Eye Icon"
+                            width="20"
+                            height="15"
+                            className={getEyeIconClassName()}
+                            onClick={togglePasswordVisibility}
+                        />
+                        </div>
+
+                        <input
+                            className={"enterfield"}
+                            type="text"
+                            id="myInput"
+                            placeholder="Enter your company name"
+                            value={company}
+                            onChange={handleCompanyNameChange}
+                        />
+                       
+                        <input
+                            className={"enterfield"}
+                            type="text"
+                            id="myInput"
+                            placeholder="Enter your login type (admin or emp)"
+                            value={loginType}
+                            onChange={handleLoginTypeChange}
+                        />
+                        <button
+                            onClick={handleLogin}
+                            style={{
+                                backgroundColor: '#007bff', // Background color
+                                color: 'white', // Text color
+                                border: 'none', // Remove border
+                                borderRadius: '4px', // Add border radius
+                                padding: '10px 20px', // Add padding
+                                cursor: 'pointer', // Add cursor style
+                                width: '75%', // Set the width to 50% of its parent
+                                margin: '50px auto 0', // 20px top margin, auto horizontal centering, 0 bottom margin
+                            }}
+                            >
+                            Login
+                        </button>
+                        <div>
+                            <a href="#" className="forgot-password-link">
+                                Forgot Password?
+                            </a>
+                        </div>
                     </div>
                     <div className={"loginFormHolder"}>
                         <div className={"loginform"}>
