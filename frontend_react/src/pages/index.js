@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {queries} from "@testing-library/react";
+//import {queries} from "@testing-library/react";
 
 function adminDash({user}){
     return(
@@ -14,6 +14,14 @@ function adminDash({user}){
 
 }
 function Home( {user, handleLoginTrue}) {
+
+    // an idea for created a create account would be to add a state variable bounded to 'islogged' which would track if
+    // the user wants to log in or create account.
+    // if the user presses the create account nane. the state variable will change and we can have a conditional in the
+    // html return of the Home() function that watches this
+
+    // a state var that will track if the user wants to create account or log inm
+    const [createAccount , setCreateAccount] = useState(false)
 
     // Function to handle changes in the input field
     const [userName, setInputValue] = useState('');
@@ -71,53 +79,106 @@ function Home( {user, handleLoginTrue}) {
     };
     if ( !user.isLoggedIn ) {
 
-        return (
-            <>
-                <div className={"consoleDisplayInner"}>
-                    <p className={"welcomeText"}></p>
-                </div>
-                <div className={"loginFormHolder"}>
-                    <div className={"loginform"}>
-                        <h1 className={"welcomeText"}> Log in to account</h1>
-                        <p className={"formlabel"}>User name</p>
-                        <input
-                            className={"enterfield"}
-                            type="text"
-                            id="myInput"
-                            value={userName}
-                            onChange={handleUserNameChange}
-                        />
-                        <p className={"formlabel"}>password</p>
-                        <input
-                            className={"enterfield"}
-                            type="text"
-                            id="myInput"
-                            value={userPass}
-                            onChange={handlePassWordChange}
-                        />
-                        <p className={"formlabel"}>company</p>
-                        <input
-                            className={"enterfield"}
-                            type="text"
-                            id="myInput"
-                            value={company}
-                            onChange={handleCompanyNameChange}
-                        />
-                        <p className={"formlabel"}>login type (admin or emp)</p>
-                        <input
-                            className={"enterfield"}
-                            type="text"
-                            id="myInput"
-                            value={loginType}
-                            onChange={handleLoginTypeChange}
-                        />
-                        <button className={"buttonLogin"} onClick={handleLogin}> login</button>
+        if (!createAccount){
+            return (
+                <>
+
+                    <div className={"consoleDisplayInner"}>
+                        <p className={"welcomeText"}></p>
                     </div>
-                </div>
+                    <div className={"loginFormHolder"}>
+                        <div className={"loginform"}>
+                            <h1 className={"welcomeText"}> Log in to account</h1>
+                            <p className={"formlabel"}>User name</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={userName}
+                                onChange={handleUserNameChange}
+                            />
+                            <p className={"formlabel"}>password</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={userPass}
+                                onChange={handlePassWordChange}
+                            />
+                            <p className={"formlabel"}>company</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={company}
+                                onChange={handleCompanyNameChange}
+                            />
+                            <p className={"formlabel"}>login type (admin or emp)</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={loginType}
+                                onChange={handleLoginTypeChange}
+                            />
+                            <button className={"buttonLogin"} onClick={handleLogin}> login</button>
+                        </div>
+                    </div>
 
-            </>
+                </>
 
-        );
+            );
+        } else {
+            return (
+                <>
+
+                    <div className={"consoleDisplayInner"}>
+                        <p className={"welcomeText"}></p>
+                    </div>
+                    <div className={"loginFormHolder"}>
+                        <div className={"loginform"}>
+                            <h1 className={"welcomeText"}> create an account</h1>
+                            <p className={"formlabel"}>User name</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={userName}
+                                onChange={handleUserNameChange}
+                            />
+                            <p className={"formlabel"}>password</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={userPass}
+                                onChange={handlePassWordChange}
+                            />
+                            <p className={"formlabel"}>company</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={company}
+                                onChange={handleCompanyNameChange}
+                            />
+                            <p className={"formlabel"}>login type (admin or emp)</p>
+                            <input
+                                className={"enterfield"}
+                                type="text"
+                                id="myInput"
+                                value={loginType}
+                                onChange={handleLoginTypeChange}
+                            />
+                            <button className={"buttonLogin"} onClick={handleLogin}> login</button>
+                        </div>
+                    </div>
+
+                </>
+
+            );
+        }
+
     } else {
         return adminDash( {user})
     }
