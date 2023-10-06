@@ -91,7 +91,7 @@ function Home( {user, handleLoginTrue}) {
                 <div className={"loginFormHolder"}>
                     <div className={"loginform"}>
                         <h1 className={"welcomeText"}>Login</h1>
-                        <p className={"formlabel"}>Username</p>
+
                         <input
                             className={"enterfield"}
                             type="text"
@@ -100,7 +100,7 @@ function Home( {user, handleLoginTrue}) {
                             value={userName}
                             onChange={handleUserNameChange}
                         />
-                        <p className="formlabel">Password</p>
+
                         <div className='password-container'>
                         <input
                             className="password-field"
@@ -113,13 +113,13 @@ function Home( {user, handleLoginTrue}) {
                         <img
                             src={eyeballIcon}
                             alt="Eye Icon"
-                            width="30"
-                            height="20"
+                            width="20"
+                            height="15"
                             className={getEyeIconClassName()}
                             onClick={togglePasswordVisibility}
                         />
                         </div>
-                        <p className={"formlabel"}>Company</p>
+
                         <input
                             className={"enterfield"}
                             type="text"
@@ -128,7 +128,7 @@ function Home( {user, handleLoginTrue}) {
                             value={company}
                             onChange={handleCompanyNameChange}
                         />
-                        <p className={"formlabel"}>Login type (admin or emp)</p>
+                       
                         <input
                             className={"enterfield"}
                             type="text"
