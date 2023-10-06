@@ -16,6 +16,14 @@ function adminDash({user}){
 }
 function Home( {user, handleLoginTrue}) {
 
+    // an idea for created a create account would be to add a state variable bounded to 'islogged' which would track if
+    // the user wants to log in or create account.
+    // if the user presses the create account nane. the state variable will change and we can have a conditional in the
+    // html return of the Home() function that watches this
+
+    // a state var that will track if the user wants to create account or log inm
+    const [createAccount , setCreateAccount] = useState(false)
+
     // Function to handle changes in the input field
     const [userName, setInputValue] = useState('');
     const [userPass, setInputValue2] = useState('');
@@ -91,7 +99,7 @@ function Home( {user, handleLoginTrue}) {
                 <div className={"loginFormHolder"}>
                     <div className={"loginform"}>
                         <h1 className={"welcomeText"}>Login</h1>
-                        <p className={"formlabel"}>Username</p>
+
                         <input
                             className={"enterfield"}
                             type="text"
@@ -100,7 +108,7 @@ function Home( {user, handleLoginTrue}) {
                             value={userName}
                             onChange={handleUserNameChange}
                         />
-                        <p className="formlabel">Password</p>
+
                         <div className='password-container'>
                         <input
                             className="password-field"
@@ -113,13 +121,13 @@ function Home( {user, handleLoginTrue}) {
                         <img
                             src={eyeballIcon}
                             alt="Eye Icon"
-                            width="30"
-                            height="20"
+                            width="20"
+                            height="15"
                             className={getEyeIconClassName()}
                             onClick={togglePasswordVisibility}
                         />
                         </div>
-                        <p className={"formlabel"}>Company</p>
+
                         <input
                             className={"enterfield"}
                             type="text"
@@ -128,7 +136,7 @@ function Home( {user, handleLoginTrue}) {
                             value={company}
                             onChange={handleCompanyNameChange}
                         />
-                        <p className={"formlabel"}>Login type (admin or emp)</p>
+                       
                         <input
                             className={"enterfield"}
                             type="text"
@@ -159,12 +167,13 @@ function Home( {user, handleLoginTrue}) {
                         </div>
                     </div>
                 </div>
-
             </>
-
         );
     } else {
-        return adminDash( {user})
+        return (
+            adminDash({user})
+
+        );
     }
 };
 
