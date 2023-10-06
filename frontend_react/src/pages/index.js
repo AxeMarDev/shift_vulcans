@@ -166,101 +166,14 @@ function Home( {user, handleLoginTrue}) {
                             </a>
                         </div>
                     </div>
-                    <div className={"loginFormHolder"}>
-                        <div className={"loginform"}>
-                            <h1 className={"welcomeText"}> Log in to account</h1>
-                            <p className={"formlabel"}>User name</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={userName}
-                                onChange={handleUserNameChange}
-                            />
-                            <p className={"formlabel"}>password</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={userPass}
-                                onChange={handlePassWordChange}
-                            />
-                            <p className={"formlabel"}>company</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={company}
-                                onChange={handleCompanyNameChange}
-                            />
-                            <p className={"formlabel"}>login type (admin or emp)</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={loginType}
-                                onChange={handleLoginTypeChange}
-                            />
-                            <button className={"buttonLogin"} onClick={handleLogin}> login</button>
-                        </div>
-                    </div>
-
-                </>
-
-            );
-        } else {
-            return (
-                <>
-
-                    <div className={"consoleDisplayInner"}>
-                        <p className={"welcomeText"}></p>
-                    </div>
-                    <div className={"loginFormHolder"}>
-                        <div className={"loginform"}>
-                            <h1 className={"welcomeText"}> create an account</h1>
-                            <p className={"formlabel"}>User name</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={userName}
-                                onChange={handleUserNameChange}
-                            />
-                            <p className={"formlabel"}>password</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={userPass}
-                                onChange={handlePassWordChange}
-                            />
-                            <p className={"formlabel"}>company</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={company}
-                                onChange={handleCompanyNameChange}
-                            />
-                            <p className={"formlabel"}>login type (admin or emp)</p>
-                            <input
-                                className={"enterfield"}
-                                type="text"
-                                id="myInput"
-                                value={loginType}
-                                onChange={handleLoginTypeChange}
-                            />
-                            <button className={"buttonLogin"} onClick={handleLogin}> login</button>
-                        </div>
-                    </div>
-
-                </>
-
-            );
-        }
-
+                </div>
+            </>
+        );
     } else {
-        return adminDash( {user})
+        return (
+            adminDash({user})
+
+        );
     }
 };
 
