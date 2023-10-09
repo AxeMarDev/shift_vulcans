@@ -10,7 +10,7 @@ import Login from './pages/login';
 import { useState } from 'react';
 
 
-function sideBarAppear({user}){
+function sideBarAppear(user){
     return(
         <div className={"navbarRoot"}>
             <Navbar user={user} />
@@ -59,14 +59,25 @@ function App() {
 
                 { user.isLoggedIn ? ( sideBarAppear(user)) : (<></>) }
 
-                <div class={"consoleroot"}>
-                    <Routes>
-                        <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
-                        <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
-                        <Route path='/admin' element={<Admin />} />
-                        <Route path='/login' element={<Login />} />
-                    </Routes>
-                </div>
+                { user.isLoggedIn ? (
+                    <div className={`w-full pl-80 } h-auto`}>
+                        <Routes>
+                            <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
+                            <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
+                            <Route path='/admin' element={<Admin />} />
+                            <Route path='/login' element={<Login />} />
+                        </Routes>
+                    </div>
+                ): (
+                    <div className={`w-full pl-0 } h-auto`}>
+                        <Routes>
+                            <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
+                            <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
+                            <Route path='/admin' element={<Admin />} />
+                            <Route path='/login' element={<Login />} />
+                        </Routes>
+                    </div>
+                )}
             </div>
 
         </Router>
