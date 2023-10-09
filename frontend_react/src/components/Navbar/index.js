@@ -4,9 +4,7 @@ import { Nav, NavLink, NavMenu,Link }
     from "./NavbarElements";
  
 const Navbar = ({user}) => {
-    console.log(user.name)
-    console.log(user.password)
-    console.log(user.company)
+
     return (
         <>
             <div class={"navbarMenu"}>
