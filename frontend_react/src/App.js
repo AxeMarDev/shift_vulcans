@@ -9,6 +9,14 @@ import Admin from './pages/admin';
 import Login from './pages/login';
 import { useState } from 'react';
 
+
+function sideBarAppear({user}){
+    return(
+        <div className={"navbarRoot"}>
+            <Navbar user={user} />
+        </div>
+    )
+}
 function App() {
     // this will keep a state-driven array of employee
     const [employees ={
@@ -47,10 +55,10 @@ function App() {
 
     return (
         <Router>
-            <div class={"router"}>
-                <div class={"navbarRoot"}>
-                    <Navbar user={user} />
-                </div>
+            <div className={"router"}>
+
+                { user.isLoggedIn ? ( sideBarAppear(user)) : (<></>) }
+
                 <div class={"consoleroot"}>
                     <Routes>
                         <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
