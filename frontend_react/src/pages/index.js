@@ -23,7 +23,7 @@ function InputButton(handleWhat){
         </>
     )
 }
-
+// do not pass as object-fixed in precious push
 function TopInputLabel(label,value, handleWhat, position){
     return(
         <input
