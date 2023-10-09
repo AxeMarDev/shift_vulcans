@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {queries} from "@testing-library/react";
 import eyeballIcon from '../Assets/eye-solid.png'; // Relative import path
+import ShiftLogo from './images/shiftlogo.png'
 
 function adminDash({user}){
     return(
@@ -14,12 +15,43 @@ function adminDash({user}){
     )
 
 }
+
+function InputButton({handleWhat}){
+    return(
+        <button
+            onClick={handleWhat}
+            className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"}
+        > Login </button>
+    )
+}
+
+function TopInputLabel({label,value, handleWhat, position}){
+    return(
+        <input
+            className=
+            { position === 1?(
+                "w-full bg-loginHolder h-12 pl-2  text-white rounded-t-lg border-black border-solid border"
+            ): position ===2 ? (
+                "w-full bg-loginHolder h-12 pl-2 text-white border-t-0 border-solid border-black border"
+            ):(
+                "w-full bg-loginHolder h-12 pl-2 text-white border-t-0 rounded-b-lg border-black border-solid border"
+            ) }
+
+            type="text"
+            id="myInput"
+            placeholder={label}
+            value={value}
+            onChange={handleWhat}
+        />
+    )
+}
+
 function Signup({handleSignup,
                     name, setName,
                     userName,setInputValue,
                     userPass,setInputValue2,
                     company,setInputValue3,
-                    showPassword,setShowPassword}){
+                    showPassword,setShowPassword,handleSetAccount}){
 
     const handleUserNameChange = (event) => {
         setInputValue(event.target.value);
@@ -42,73 +74,29 @@ function Signup({handleSignup,
     }
     return(
         <>
-            <div className={"loginform"}>
-                <h1 className={"welcomeText"}>Signup</h1>
+            <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
 
-                <input
-                    className={"enterfield"}
-                    type="text"
-                    id="myInput"
-                    placeholder="Enter your username"
-                    value={userName}
-                    onChange={handleUserNameChange}
-                />
-
-                <div className='password-container'>
-                    <input
-                        className="password-field"
-                        type={showPassword ? "text" : "password"}
-                        id="myInput"
-                        placeholder="Enter your password"
-                        value={userPass}
-                        onChange={handlePassWordChange}
-                    />
-                    <img
-                        src={eyeballIcon}
-                        alt="Eye Icon"
-                        width="20"
-                        height="15"
-                        onClick={togglePasswordVisibility}
-                    />
+                <div className={"flex  content-center justify-center"}>
+                    <div className={"mt-5 mb-5 w-40  "}>
+                        <img src={ShiftLogo} className={"w-auto "}/>
+                    </div>
+                </div>
+                <div className={"flex mb-4 content-center justify-center"}>
+                    <h1 className={"font-bold text-white"}>Sign into account</h1>
                 </div>
 
-                <input
-                    className={"enterfield"}
-                    type="text"
-                    id="myInput"
-                    placeholder="Enter your company name"
-                    value={company}
-                    onChange={handleCompanyNameChange}
-                />
-                <input
-                    className={"enterfield"}
-                    type="text"
-                    id="myInput"
-                    placeholder="Enter your  name"
-                    value={name}
-                    onChange={handleNameChange}
-                />
 
-                <button
-                    onClick={handleSignup}
-                    style={{
-                        backgroundColor: '#007bff', // Background color
-                        color: 'white', // Text color
-                        border: 'none', // Remove border
-                        borderRadius: '4px', // Add border radius
-                        padding: '10px 20px', // Add padding
-                        cursor: 'pointer', // Add cursor style
-                        width: '75%', // Set the width to 50% of its parent
-                        margin: '50px auto 0', // 20px top margin, auto horizontal centering, 0 bottom margin
-                    }}
-                >
-                    Login
-                </button>
-                <div>
-                    <a href="#" className="forgot-password-link">
-                        Forgot Password?
-                    </a>
+                {TopInputLabel({label: "enter username", userName,handleUserNameChange,position:1})}
+                {TopInputLabel({label: "Enter your password",userPass, handlePassWordChange,position:2})}
+                {TopInputLabel({label: "Enter your company name",company, handleCompanyNameChange,position:2})}
+                {TopInputLabel({label: "Enter your  name",name, handleNameChange,position:3})}
+                {InputButton({handleSignup})}
+
+                <div className={"flex mb-4 content-center justify-center"}>
+                    <button className="text-blue-500 " onClick={handleSetAccount}>Create account</button>
                 </div>
+
+
             </div>
         </>
     )
@@ -118,7 +106,7 @@ function Login({handleLogin,
                    userName,setInputValue,
                    userPass,setInputValue2,
                    company,setInputValue3,
-                   showPassword,setShowPassword}){
+                   showPassword,setShowPassword, handleSetAccount}){
 
 
     const handleUserNameChange = (event) => {
@@ -138,65 +126,31 @@ function Login({handleLogin,
     };
 
     return(
-        <div className={"loginform"}>
-            <h1 className={"welcomeText"}>Login</h1>
+        <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
 
-            <input
-                className={"enterfield"}
-                type="text"
-                id="myInput"
-                placeholder="Enter your username"
-                value={userName}
-                onChange={handleUserNameChange}
-            />
-
-            <div className='password-container'>
-                <input
-                    className="password-field"
-                    type={showPassword ? "text" : "password"}
-                    id="myInput"
-                    placeholder="Enter your password"
-                    value={userPass}
-                    onChange={handlePassWordChange}
-                />
-                <img
-                    src={eyeballIcon}
-                    alt="Eye Icon"
-                    width="20"
-                    height="15"
-                    onClick={togglePasswordVisibility}
-                />
+            <div className={"flex  content-center justify-center"}>
+                <div className={"mt-5 mb-5 w-40  "}>
+                    <img src={ShiftLogo} className={"w-auto "}/>
+                </div>
+            </div>
+            <div className={"flex mb-4 content-center justify-center"}>
+                <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
 
-            <input
-                className={"enterfield"}
-                type="text"
-                id="myInput"
-                placeholder="Enter your company name"
-                value={company}
-                onChange={handleCompanyNameChange}
-            />
 
-            <button
-                onClick={handleLogin}
-                style={{
-                    backgroundColor: '#007bff', // Background color
-                    color: 'white', // Text color
-                    border: 'none', // Remove border
-                    borderRadius: '4px', // Add border radius
-                    padding: '10px 20px', // Add padding
-                    cursor: 'pointer', // Add cursor style
-                    width: '75%', // Set the width to 50% of its parent
-                    margin: '50px auto 0', // 20px top margin, auto horizontal centering, 0 bottom margin
-                }}
-            >
-                Login
-            </button>
-            <div>
-                <a href="#" className="forgot-password-link">
-                    Forgot Password?
-                </a>
+
+            {TopInputLabel({label: "enter username", userName,handleUserNameChange,position:1})}
+            {TopInputLabel({label: "Enter your password",userPass, handlePassWordChange,position:2})}
+            {TopInputLabel({label: "Enter your company name",company, handleCompanyNameChange,position:3})}
+            {InputButton({handleLogin})}
+
+            <div className={"flex mb-4 content-center justify-center"}>
+                <button href="#" className="text-blue-500 ">Forgot Password?</button>
+                <p className="text-blue-500 ">*</p>
+                <button className="text-blue-500 " onClick={handleSetAccount}>Login</button>
             </div>
+
+
         </div>
     )
 }
@@ -300,24 +254,25 @@ function Home( {user, handleLoginTrue}) {
 
         return (
             <>
-                <div className={"consoleDisplayInner"}>
-                    <p className={"welcomeText"}></p>
-                </div>
-                <div className={"loginFormHolder"}>
-                    { !createAccount?
-                        Login({
-                        handleLogin,
-                        userName,setInputValue,
-                        userPass,setInputValue2,
-                        company,setInputValue3,
-                        showPassword,setShowPassword}):
-                        Signup({
-                        handleSignup, name, setName,
-                        userName,setInputValue,
-                        userPass,setInputValue2,
-                        company,setInputValue3,
-                        showPassword,setShowPassword})}
-                    <button onClick={handleSetAccount}>switch</button>
+
+                <div className={"  flex w-screen h-screen  justify-center grid content-center "}>
+                    <div>
+                        { !createAccount?
+                            Login({
+                                handleLogin,
+                                userName,setInputValue,
+                                userPass,setInputValue2,
+                                company,setInputValue3,
+                                showPassword,setShowPassword,handleSetAccount}):
+                            Signup({
+                                handleSignup, name, setName,
+                                userName,setInputValue,
+                                userPass,setInputValue2,
+                                company,setInputValue3,
+                                showPassword,setShowPassword,handleSetAccount})}
+
+                    </div>
+
                 </div>
 
             </>

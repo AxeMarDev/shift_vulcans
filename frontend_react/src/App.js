@@ -60,7 +60,7 @@ function App() {
                 { user.isLoggedIn ? ( sideBarAppear(user)) : (<></>) }
 
                 { user.isLoggedIn ? (
-                    <div className={`w-full pl-80 } h-auto`}>
+                    <div className={`w-full pl-80  h-auto`}>
                         <Routes>
                             <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
                             <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
@@ -69,7 +69,7 @@ function App() {
                         </Routes>
                     </div>
                 ): (
-                    <div className={`w-full pl-0 } h-auto`}>
+                    <div className={`w-full pl-0 h-screen`}>
                         <Routes>
                             <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
                             <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
