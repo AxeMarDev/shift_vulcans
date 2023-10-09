@@ -9,23 +9,22 @@ function adminDash({user}){
             <div className={"consoleDisplayInner2"}>
                 <p className={"welcomeText"}> welcome to {user.company} dashboard</p>
             </div>
-
         </div>
 
     )
 
 }
 
-function InputButton({handleWhat}){
+function InputButton(handleWhat){
+
     return(
-        <button
-            onClick={handleWhat}
-            className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"}
-        > Login </button>
+        <>
+            <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}> Login </button>
+        </>
     )
 }
 
-function TopInputLabel({label,value, handleWhat, position}){
+function TopInputLabel(label,value, handleWhat, position){
     return(
         <input
             className=
@@ -86,11 +85,12 @@ function Signup({handleSignup,
                 </div>
 
 
-                {TopInputLabel({label: "enter username", userName,handleUserNameChange,position:1})}
-                {TopInputLabel({label: "Enter your password",userPass, handlePassWordChange,position:2})}
-                {TopInputLabel({label: "Enter your company name",company, handleCompanyNameChange,position:2})}
-                {TopInputLabel({label: "Enter your  name",name, handleNameChange,position:3})}
-                {InputButton({handleSignup})}
+                {TopInputLabel("enter username", userName,handleUserNameChange,1)}
+                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2)}
+                {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
+                {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
+                {InputButton(handleSignup)}
+
 
                 <div className={"flex mb-4 content-center justify-center"}>
                     <button className="text-blue-500 " onClick={handleSetAccount}>Create account</button>
@@ -139,10 +139,10 @@ function Login({handleLogin,
 
 
 
-            {TopInputLabel({label: "enter username", userName,handleUserNameChange,position:1})}
-            {TopInputLabel({label: "Enter your password",userPass, handlePassWordChange,position:2})}
-            {TopInputLabel({label: "Enter your company name",company, handleCompanyNameChange,position:3})}
-            {InputButton({handleLogin})}
+            {TopInputLabel( "enter username", userName,handleUserNameChange,1)}
+            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2)}
+            {TopInputLabel( "Enter your company name",company, handleCompanyNameChange,3)}
+            {InputButton(handleLogin)}
 
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
@@ -204,7 +204,7 @@ function Home( {user, handleLoginTrue}) {
             .then((response)=> response.json() )
             .then((data) => {
                 // Handle the API response data here
-                // console.log(data);
+                console.log(data);
                 handleLoginTrue( data)
 
 
@@ -219,7 +219,7 @@ function Home( {user, handleLoginTrue}) {
     };
     const handleSignup = () => {
         // Construct the request data
-
+        console.log("hello")
         const queryParams = new URLSearchParams({
             name: name,
             username: userName,

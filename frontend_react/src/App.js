@@ -72,9 +72,6 @@ function App() {
                     <div className={`w-full pl-0 h-screen`}>
                         <Routes>
                             <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
-                            <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
-                            <Route path='/admin' element={<Admin />} />
-                            <Route path='/login' element={<Login />} />
                         </Routes>
                     </div>
                 )}
