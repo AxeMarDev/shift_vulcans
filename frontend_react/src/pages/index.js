@@ -317,8 +317,9 @@ function Home( {user, handleLoginTrue}) {
                         userPass,setInputValue2,
                         company,setInputValue3,
                         showPassword,setShowPassword})}
+                    <button onClick={handleSetAccount}>switch</button>
                 </div>
-                <button onClick={handleSetAccount}>switch</button>
+
             </>
         );
     } else {
