@@ -4,3 +4,11 @@
 -- Attempted to use mySQL2 but couldn't find a working model so decided on using SQLite.
 - https://www.youtube.com/playlist?list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ
 -- This is the source for my React Native knowledge.
+- Using AWS for hosting
+-- https://aws.amazon.com/amplify/hosting/
+--- Talks about the basics of hosting and what you need to do to get started
+-- https://www.youtube.com/watch?v=sCQwEVhCvTg
+-- https://www.youtube.com/watch?v=goiW0g7A0WE
+--- Talks a lot about the steps of getting your site up and running
+-- https://aws.amazon.com/getting-started/hands-on/?pg=gs&sec=lyfa&getting-started-all.sort-by=item.additionalFields.content-latest-publish-date&getting-started-all.sort-order=desc&awsf.getting-started-category=*all&awsf.getting-started-content-type=*all
+--- This link is Amazons guide on how do to a bunch of different things using AWS.
