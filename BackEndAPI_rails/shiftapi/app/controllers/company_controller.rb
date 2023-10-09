@@ -14,8 +14,24 @@ class CompanyController < ApplicationController
   end
 
   def create
-    if Company.create(name: params[:companyname], adminname: params[:adminname], adminpassword: params[:adminpassword])
-      render json: "company created"
+    if (@company = Company.create(name: params[:companyName]))
+      if(@employee = @company.employee_infos.new( name: params[:name],
+                                                  username: params[:username],
+                                                  password: params[:password],
+                                                  password_confirmation: params[:password],
+                                                  bio: "",
+                                                  admin: true,
+                                                  clockin: false))
+        if @employee.save
+          @company.save
+          render json: { message: "account made" }
+        else
+          render json: { message: "error" }
+        end
+      else
+        render json: "error"
+      end
+
     else
       render json: "error created"
     end

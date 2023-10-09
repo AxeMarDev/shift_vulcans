@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'authentication/create'
   get 'employee/index'
 
 
@@ -12,8 +13,9 @@ Rails.application.routes.draw do
   # curl --header "Content-Type: application/json"  --request POST --data '{"adminname":"user1", "adminpassword":"2002068", "companyname":"company1", "employeename":"axell","employeepass":"password" }'  http://localhost:3000/companyemployees
   # curl --header "Content-Type: application/json"  --request GET --data '{"adminname":"user1", "adminpassword":"2002068", "companyname":"axellelectric" }'  http://localhost:3000/companyemployees
 
-  resources :companyemployee, only:[ :update]
+  post 'authenticate', to: 'authentication#create'
 
+  resources :companyemployee, only:[ :update]
   resources :employee, only:[:index]
 
 
