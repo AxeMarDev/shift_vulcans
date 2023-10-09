@@ -26,7 +26,7 @@ function App() {
     // this will keep a state-driven information of admin user
     const [user={
         username: "no user active",
-        password: "no pass word",
+        token: "no token",
         company: "nocompany",
         isLoggedIn: false,
     }, setUser] = useState();
@@ -46,9 +46,9 @@ function App() {
 
         setUser({
             isLoggedIn: true,
-            username: data.adminname,
-            password: data.adminpassword,
-            company: data.name,
+            token: data.token,
+            username: data.employee.name,
+            company: data.company.name,
         });
 
     };
