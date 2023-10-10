@@ -1,3 +1,7 @@
 https://www.youtube.com/watch?v=PkZNo7MFNFg
 https://www.youtube.com/watch?v=W6NZfCO5SIk
 -Basics of java script.
+
+https://community.aws/tutorials/using-ec2-userdata-to-bootstrap-python-web-app
+-how to deploy web application using ec2
+
