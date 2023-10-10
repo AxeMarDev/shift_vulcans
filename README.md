@@ -17,16 +17,16 @@ to improve effieceny and accuarcy of companies.
 # Technologies #
 ![Scheme](awsExplained.png)
 ![Scheme](jwtexplained.png)
-* Aws route53,
-* Aws ec2,
-* nginx,
-* React,
-* CSS,
-* JavaScript,
-* Firebase,
-* Ruby on rails,
-* Mysql and SQlite
-* JWT
+1. Aws route53,
+2.  Aws ec2,
+3.  nginx,
+4.  React,
+5.  CSS,
+6.  JavaScript,
+7.   Firebase,
+8.  Ruby on rails,
+9.  Mysql and SQlite
+10.  JWT
 
 # Features #
 *User profile: This feature will be the first implementation to our app. 
