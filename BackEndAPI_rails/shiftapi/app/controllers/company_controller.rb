@@ -13,6 +13,7 @@ class CompanyController < ApplicationController
     end
   end
 
+  # curl --header "Content-Type: application/json"  --request POST --data '{"companyName":"company", "name":"me", "username":"me", "password":"password"}' http://localhost/company
   def create
     if (@company = Company.create(name: params[:companyName]))
       if(@employee = @company.employee_infos.new( name: params[:name],
