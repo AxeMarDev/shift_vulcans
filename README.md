@@ -17,6 +17,7 @@ to improve effieceny and accuarcy of companies.
 # Technologies #
 ![Scheme](awsExplained.png)
 ![Scheme](jwtexplained.png)
+![Scheme](databasescheme.png)
 1. Aws route53,
 2. Aws ec2,
 3. nginx,
