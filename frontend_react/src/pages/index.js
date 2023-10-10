@@ -29,11 +29,11 @@ function TopInputLabel(label,value, handleWhat, position, type){
         <input
             className=
             { position === 1?(
-                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
+                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ): position ===2 ? (
-                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
+                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ):(
-                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
+                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ) }
 
             type={type || "text"} // Set the input type to the specified type or default to "text"
