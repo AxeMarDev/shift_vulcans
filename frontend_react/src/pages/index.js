@@ -24,8 +24,14 @@ function InputButton(handleWhat){
     )
 }
 // do not pass as object-fixed in precious push
-function TopInputLabel(label,value, handleWhat, position, type){
+function TopInputLabel(label,value, handleWhat, position, type, showPassword, togglePasswordVisibility){
+
+    const handleTogglePasswordVisibility = () => {
+        togglePasswordVisibility(!showPassword);
+    };
+
     return(
+        <div className="password-container">
         <input
             className=
             { position === 1?(
@@ -36,14 +42,23 @@ function TopInputLabel(label,value, handleWhat, position, type){
                 "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ) }
 
-            type={type || "text"} // Set the input type to the specified type or default to "text"
+            type={type === 'password' && showPassword ? 'text' : type || 'text'} // Toggle input type based on showPassword
             id="myInput"
             placeholder={label}
             value={value}
             onChange={handleWhat}
             style={{marginBottom: "8px"}}// space between fields
-            
         />
+        {type === 'password' && (
+            <img 
+                src={eyeballIcon}
+                alt="Show password"
+                className="absolute top-6 right-2 transform -translate-y-1/2 cursor-pointer"
+                style={{ width: '26px', height: '20px' }} // Adjust the width and height here
+                onClick={handleTogglePasswordVisibility}
+             />
+        )}
+        </div>
     )
 }
 
@@ -88,7 +103,7 @@ function Signup({handleSignup,
 
 
                 {TopInputLabel("enter username", userName,handleUserNameChange,1)}
-                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password')}
+                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
                 {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
                 {InputButton(handleSignup)}
@@ -108,8 +123,7 @@ function Login({handleLogin,
                    userName,setInputValue,
                    userPass,setInputValue2,
                    company,setInputValue3,
-                   showPassword,setShowPassword, handleSetAccount}){
-
+                   showPassword,setShowPassword,handleSetAccount}){
 
     const handleUserNameChange = (event) => {
         setInputValue(event.target.value);
@@ -142,7 +156,7 @@ function Login({handleLogin,
 
 
             {TopInputLabel( "enter username", userName,handleUserNameChange,1)}
-            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password')}
+            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
             {TopInputLabel( "Enter your company name",company, handleCompanyNameChange,3)}
             {InputButton(handleLogin)}
 
