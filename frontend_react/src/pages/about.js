@@ -31,8 +31,6 @@ function About({user,employees, handleEmployeeList}){
     const handleEmployeelist = (user) => {
 
         const queryParams = new URLSearchParams({
-            adminname: user.username,
-            adminpassword: user.password,
             companyname: user.company,
         });
         const url = `http://localhost:3000/companyemployees?${queryParams}`;
@@ -40,6 +38,7 @@ function About({user,employees, handleEmployeeList}){
             method: 'GET', // Change the method if needed (e.g., POST)
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `${user.token}`
             },
         })
             .then((response)=> response.json() )
