@@ -80,9 +80,8 @@ function About({user,employees, handleEmployeeList}){
         //const data = `${ image }`
         const secondData = `${image}`
 
+
         const queryParams = new URLSearchParams({
-            adminname: user.username,
-            adminpassword: user.password,
             companyname: user.company,
             employeename: "axell",
             employeepass: "0000",
@@ -93,6 +92,7 @@ function About({user,employees, handleEmployeeList}){
         fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST),
             headers: {
+                'Authorization': `${user.token}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -102,11 +102,7 @@ function About({user,employees, handleEmployeeList}){
             .then((response)=> response.json() )
             .then(() => {
                 // Handle the API response data here
-                console.log("poset")
                 handleEmployeelist(user)
-
-
-                // here
                 // You can also perform any other actions or state updates based on the response
             })
 
@@ -118,14 +114,13 @@ function About({user,employees, handleEmployeeList}){
     const handleDestoryEmployee = (user, id) => {
 
         const queryParams = new URLSearchParams({
-            adminname: user.username,
-            adminpassword: user.password,
             companyname: user.company,
         });
         const url = `http://localhost:3000/companyemployees/${id}?${queryParams}`;
         fetch(url, {
             method: 'DELETE', // Change the method if needed (e.g., POST)
             headers: {
+                'Authorization': `${user.token}`,
                 'Content-Type': 'application/json',
             },
         })
@@ -150,7 +145,7 @@ function About({user,employees, handleEmployeeList}){
         });
         const url = `http://localhost:3000/companyemployee/${id}?${queryParams}`;
         fetch(url, {
-            method: 'PUT', // Change the method if needed (e.g., POST)
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
