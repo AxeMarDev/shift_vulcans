@@ -62,6 +62,15 @@ function About({user,employees, handleEmployeeList}){
             });
     };
 
+    const[nameOfEmployee, setNameOfEmployee ]=useState("")
+    const HandleNameOfEmployee = (event) =>{
+        setNameOfEmployee(event.target.value)
+    }
+    const[passwordOfEmployee, setPasswordOfEmployee ]=useState("")
+    const HandlePasswordOfEmployee = (event) =>{
+        setPasswordOfEmployee(event.target.value)
+    }
+
     const [image, setImage] = useState("");
 
     const onFileChange = (e) => {
@@ -87,8 +96,8 @@ function About({user,employees, handleEmployeeList}){
 
         const queryParams = new URLSearchParams({
             companyname: user.company,
-            employeename: "axell",
-            employeepass: "0000",
+            employeename: nameOfEmployee,
+            employeepass: passwordOfEmployee,
 
         });
 
@@ -107,7 +116,11 @@ function About({user,employees, handleEmployeeList}){
             .then((response)=> response.json() )
             .then(() => {
                 // Handle the API response data here
+                setNameOfEmployee("")
+                setPasswordOfEmployee("")
+                setImage("")
                 handleEmployeelist(user)
+
                 // You can also perform any other actions or state updates based on the response
             })
 
@@ -181,6 +194,8 @@ function About({user,employees, handleEmployeeList}){
 
                     <p className={"welcomeText"}> welcome to dashboard</p>
                     <input type="file"  onChange={onFileChange}/>
+                    <input type={"text"} onChange={HandleNameOfEmployee} placeholder={"name"} value={nameOfEmployee}/>
+                    <input type={"text"} onChange={HandlePasswordOfEmployee}  placeholder={"password"} value={passwordOfEmployee}/>
                     <button onClick={()=>handleAddEmployee(user, employees,image)}> Add employee </button>
 
                 </div>

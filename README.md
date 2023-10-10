@@ -15,14 +15,23 @@ to improve effieceny and accuarcy of companies.
 ![Scheme](shiftlogo.png)
 
 # Technologies #
-
-*React Native,
-*CSS,
-*JavaScript,
-*Firebase
-*Ruby on rails
+![Scheme](awsExplained.png)
+![Scheme](jwtexplained.png)
+* Aws route53,
+* Aws ec2,
+* nginx,
+* React,
+* CSS,
+* JavaScript,
+* Firebase,
+* Ruby on rails,
+* Mysql and SQlite
+* JWT
 
 # Features #
 *User profile: This feature will be the first implementation to our app. 
 It will be intended for both employees and employers as a way to store
 personal information stored by the company
+
+# Contributions #
+* Axell "worked on setting up technologies and connecting backend to frontend"

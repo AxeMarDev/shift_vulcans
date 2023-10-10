@@ -22,7 +22,9 @@ class CompanyController < ApplicationController
                                                   password_confirmation: params[:password],
                                                   bio: "",
                                                   admin: true,
-                                                  clockin: false))
+                                                  clockin: false,
+                                                  userImage: params[:userImage]))
+
         if @employee.save
           @company.save
           render json: { message: "account made" }

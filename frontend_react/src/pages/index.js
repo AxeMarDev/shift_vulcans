@@ -67,7 +67,7 @@ function Signup({handleSignup,
                     userName,setInputValue,
                     userPass,setInputValue2,
                     company,setInputValue3,
-                    showPassword,setShowPassword,handleSetAccount}){
+                    showPassword,setShowPassword,handleSetAccount, onFileChange}){
 
     const handleUserNameChange = (event) => {
         setInputValue(event.target.value);
@@ -106,6 +106,7 @@ function Signup({handleSignup,
                 {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
                 {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
+                <input type="file"  onChange={onFileChange}/>
                 {InputButton(handleSignup)}
 
 
@@ -180,6 +181,21 @@ function Home( {user, handleLoginTrue}) {
     // a state var that will track if the user wants to create account or log inm
     const [createAccount , setCreateAccount] = useState(false)
 
+    const [image, setImage] = useState("");
+    const onFileChange = (e) => {
+        const file = e.target.files[0]
+        var value = ''
+
+        if (file){
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                value = e.target.result.split(',')[1];
+                setImage(value);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleSetAccount = () =>{
         setCreateAccount(!createAccount)
     }
@@ -250,6 +266,9 @@ function Home( {user, handleLoginTrue}) {
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify(
+                {userImage: image}
+            )
         })
             .then((response)=> response.json() )
             .then((data) => {
@@ -285,7 +304,7 @@ function Home( {user, handleLoginTrue}) {
                                 userName,setInputValue,
                                 userPass,setInputValue2,
                                 company,setInputValue3,
-                                showPassword,setShowPassword,handleSetAccount})}
+                                showPassword,setShowPassword,handleSetAccount,onFileChange})}
 
                     </div>
 
