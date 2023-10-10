@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
         colors:{
-          'loginHolder':'#262626'
+          'loginHolder':'#262626',
+          'loginField':'#2f2f2f'
         },
     },
   },
