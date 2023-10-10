@@ -24,7 +24,7 @@ function InputButton(handleWhat){
     )
 }
 // do not pass as object-fixed in precious push
-function TopInputLabel(label,value, handleWhat, position){
+function TopInputLabel(label,value, handleWhat, position, type){
     return(
         <input
             className=
@@ -36,7 +36,7 @@ function TopInputLabel(label,value, handleWhat, position){
                 "w-full bg-loginHolder h-12 pl-2 text-white border-t-0 rounded-b-lg border-black border-solid border"
             ) }
 
-            type="text"
+            type={type || "text"} // Set the input type to the specified type or default to "text"
             id="myInput"
             placeholder={label}
             value={value}
@@ -86,7 +86,7 @@ function Signup({handleSignup,
 
 
                 {TopInputLabel("enter username", userName,handleUserNameChange,1)}
-                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2)}
+                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password')}
                 {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
                 {InputButton(handleSignup)}
@@ -140,7 +140,7 @@ function Login({handleLogin,
 
 
             {TopInputLabel( "enter username", userName,handleUserNameChange,1)}
-            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2)}
+            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password')}
             {TopInputLabel( "Enter your company name",company, handleCompanyNameChange,3)}
             {InputButton(handleLogin)}
 
