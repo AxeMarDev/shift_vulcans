@@ -29,11 +29,11 @@ function TopInputLabel(label,value, handleWhat, position, type){
         <input
             className=
             { position === 1?(
-                "w-full bg-loginHolder h-12 pl-2  text-white rounded-t-lg border-black border-solid border"
+                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ): position ===2 ? (
-                "w-full bg-loginHolder h-12 pl-2 text-white border-t-0 border-solid border-black border"
+                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ):(
-                "w-full bg-loginHolder h-12 pl-2 text-white border-t-0 rounded-b-lg border-black border-solid border"
+                "w-full bg-loginHolder h-12 pl-2 text-white rounded-lg border-black border-solid border"
             ) }
 
             type={type || "text"} // Set the input type to the specified type or default to "text"
@@ -41,6 +41,8 @@ function TopInputLabel(label,value, handleWhat, position, type){
             placeholder={label}
             value={value}
             onChange={handleWhat}
+            style={{marginBottom: "8px"}}// space between fields
+            
         />
     )
 }
