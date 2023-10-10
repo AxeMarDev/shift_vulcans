@@ -5,3 +5,5 @@ https://www.youtube.com/watch?v=W6NZfCO5SIk
 https://community.aws/tutorials/using-ec2-userdata-to-bootstrap-python-web-app
 -how to deploy web application using ec2
 
+https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/?ref=gsrchandson&id=updated
+-module used on AWS to build a full stack react app to play more with react and understand GUI.
