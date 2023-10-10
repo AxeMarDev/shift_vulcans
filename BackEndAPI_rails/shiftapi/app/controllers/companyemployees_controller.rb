@@ -7,12 +7,19 @@ class CompanyemployeesController < ApplicationController
   before_action :authenticate_user
   def destroy
     if (company = Company.find_by(name: params[:companyname]))
-      if company.adminname == params[:adminname] && company.adminpassword == params[:adminpassword]
+      if company.employee_infos.find_by(id: @current_user) && @current_user.admin == true
+
         employee_destory = company.employee_infos.find_by(id: params[:id])
-        employee_destory.destroy
-        employee_destory.save
-        company.save
-        render json: company.employee_infos
+        if (employee_destory !=  @current_user) &&  (employee_destory.admin != true)
+          employee_destory.destroy
+          employee_destory.save
+          company.save
+          render json: company.employee_infos
+        else
+          render json: "cannot delete self or admin"
+        end
+
+
       else
         render json: "could not create employee"
       end
@@ -22,13 +29,14 @@ class CompanyemployeesController < ApplicationController
   end
   def create
     if (company = Company.find_by(name: params[:companyname]))
-      if company.adminname == params[:adminname] && company.adminpassword == params[:adminpassword]
+      if company.employee_infos.find_by(id: @current_user) && @current_user.admin == true
         company.employee_infos.create( name: params[:employeename],
                                   username: params[:employeename],
                                   password: params[:employeepass],
                                   userImage: params[:userImage],
                                   clockin: false,
-                                  bio: "empty")
+                                  bio: "empty",
+                                  admin: false)
 
         company.save
         render json: company.employee_infos
