@@ -40,8 +40,17 @@ personal information stored by the company
       * reference-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-32
     * created user auth using jwt
       * reference-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-57
+* Austin "Worked mostly on frontend visuals and research about the technologies being used"
+    * Created skeleton react app with basic funstion that we have been building off of
+        * Referance URL - https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-34
+        "ABOVE IS MISLABELED ON GIT KRACKEN AND JUST SAYS SKELETON UI WITH MY NET ID"
+    * Conducted research on multiple technologies
+        * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-42
+        * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-29
 
 # Next Steps #
 
 * Axell
   * Create mobile view and add task to employees
+* Austin
+  * work on mobile view Clock in and out function
