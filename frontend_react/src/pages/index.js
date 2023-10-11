@@ -15,14 +15,13 @@ function adminDash({user}){
 
 }
 
-function InputButton(handleWhat){
-
-    return(
-        <>
-            <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}> Login </button>
-        </>
-    )
-}
+function InputButton(handleWhat, text) {
+    return (
+      <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}>
+        {text}
+      </button>
+    );
+  }
 // do not pass as object-fixed in precious push
 function TopInputLabel(label,value, handleWhat, position, type, showPassword, togglePasswordVisibility){
 
@@ -99,7 +98,7 @@ function Signup({handleSignup,
                     </div>
                 </div>
                 <div className={"flex mb-4 content-center justify-center"}>
-                    <h1 className={"font-bold text-white"}>Sign into account</h1>
+                    <h1 className={"font-bold text-white"}>Create an account</h1>
                 </div>
 
 
@@ -108,11 +107,11 @@ function Signup({handleSignup,
                 {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
                 <input type="file"  onChange={onFileChange}/>
-                {InputButton(handleSignup)}
+                {InputButton(handleSignup, "Create Account")}
 
 
                 <div className={"flex mb-4 content-center justify-center"}>
-                    <button className="text-blue-500 " onClick={handleSetAccount}>Create account</button>
+                    <button className="text-blue-500 " onClick={handleSetAccount}>Or Login</button>
                 </div>
 
 
@@ -160,12 +159,13 @@ function Login({handleLogin,
             {TopInputLabel( "enter username", userName,handleUserNameChange,1)}
             {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
             {TopInputLabel( "Enter your company name",company, handleCompanyNameChange,3)}
-            {InputButton(handleLogin)}
-
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
-                <p className="text-blue-500 ">*</p>
-                <button className="text-blue-500 " onClick={handleSetAccount}>Login</button>
+            </div>
+            {InputButton(handleLogin, "Login")}
+
+            <div className={"flex mb-4 content-center justify-center"}>
+                <button className="text-blue-500 " onClick={handleSetAccount}>Or Create Account</button>
             </div>
 
 
