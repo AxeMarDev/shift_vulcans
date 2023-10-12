@@ -15,12 +15,20 @@ function adminDash({user}){
 
 }
 
-function InputButton(handleWhat, text) {
-    return (
-      <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}>
-        {text}
-      </button>
-    );
+function InputButton(handleWhat, text, passwordsMatch) {
+    if (text == 'Create Account') {
+        return (
+        <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat} disabled={!passwordsMatch}>
+            {text}
+        </button>
+        );
+    } else {
+        return (
+        <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}>
+            {text}
+        </button>
+        );
+    }
   }
 // do not pass as object-fixed in precious push
 function TopInputLabel(label,value, handleWhat, position, type, showPassword, togglePasswordVisibility){
@@ -68,6 +76,9 @@ function Signup({handleSignup,
                     signupPass,setPasswordSignup,
                     companySignup,setCompanySignup,
                     showPasswordSignup,setShowPasswordSignup,
+                    passwordConfirmation,setPasswordConfirmation,
+                    showPasswordConfirmation,setShowPasswordConfirmation,
+                    passwordsMatch,setPasswordsMatch,
                     handleSetAccount, onFileChange}){
 
     const handleUserNameChange = (event) => {
@@ -77,6 +88,11 @@ function Signup({handleSignup,
         setPasswordSignup(event.target.value);
 
     };
+    const handlePasswordConfirmationChange = (event) => {
+        setPasswordConfirmation(event.target.value);
+        const doPasswordsMatch = event.target.value === signupPass;
+        setPasswordsMatch(doPasswordsMatch);
+    };
     const handleCompanyNameChange = (event) => {
         setCompanySignup(event.target.value);
 
@@ -85,7 +101,9 @@ function Signup({handleSignup,
     const togglePasswordVisibility = () => {
         setShowPasswordSignup(!showPasswordSignup);
     };
-
+    const togglePasswordVisibility2 = () => {
+        setShowPasswordConfirmation(!showPasswordConfirmation);
+    };
     const handleNameChange = (event) =>{
         setName(event.target.value)
     }
@@ -105,10 +123,11 @@ function Signup({handleSignup,
 
                 {TopInputLabel("enter username", signupUserName,handleUserNameChange,1)}
                 {TopInputLabel( "Enter your password",signupPass, handlePassWordChange,2,'password', showPasswordSignup, togglePasswordVisibility)}
+                {TopInputLabel("Confirm your password", passwordConfirmation, handlePasswordConfirmationChange, 3, 'password', showPasswordConfirmation, togglePasswordVisibility2)}
                 {TopInputLabel("Enter your company name",companySignup, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
                 <input type="file"  onChange={onFileChange}/>
-                {InputButton(handleSignup, "Create Account")}
+                {InputButton(handleSignup, "Create Account",passwordsMatch)}
 
 
                 <div className={"flex mb-4 content-center justify-center"}>
@@ -242,9 +261,12 @@ function Home( {user, handleLoginTrue}) {
     /*-------------signup fields---------------*/
     const [signupUserName, setInputValueSignup] = useState('');
     const [showPasswordSignup, setShowPasswordSignup] = useState(false);
+    const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [name, setName] = useState('');
     const [signupPass, setPasswordSignup] = useState('');
     const [companySignup, setCompanySignup] = useState('');
+    const [passwordsMatch, setPasswordsMatch] = useState(false);
     /*----------------------------------------*/
 
     const handleLogin = () => {
@@ -375,6 +397,9 @@ function Home( {user, handleLoginTrue}) {
                                 signupPass,setPasswordSignup,
                                 companySignup,setCompanySignup,
                                 showPasswordSignup,setShowPasswordSignup,
+                                passwordConfirmation,setPasswordConfirmation,
+                                showPasswordConfirmation,setShowPasswordConfirmation,
+                                passwordsMatch,setPasswordsMatch,
                                 handleSetAccount,onFileChange}))}
 
                     </div>
