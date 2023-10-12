@@ -64,25 +64,26 @@ function TopInputLabel(label,value, handleWhat, position, type, showPassword, to
 
 function Signup({handleSignup,
                     name, setName,
-                    userName,setInputValue,
-                    userPass,setInputValue2,
-                    company,setInputValue3,
-                    showPassword,setShowPassword,handleSetAccount, onFileChange}){
+                    signupUserName,setInputValueSignup,
+                    signupPass,setPasswordSignup,
+                    companySignup,setCompanySignup,
+                    showPasswordSignup,setShowPasswordSignup,
+                    handleSetAccount, onFileChange}){
 
     const handleUserNameChange = (event) => {
-        setInputValue(event.target.value);
+        setInputValueSignup(event.target.value);
     };
     const handlePassWordChange = (event) => {
-        setInputValue2(event.target.value);
+        setPasswordSignup(event.target.value);
 
     };
     const handleCompanyNameChange = (event) => {
-        setInputValue3(event.target.value);
+        setCompanySignup(event.target.value);
 
     };
 
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
+        setShowPasswordSignup(!showPasswordSignup);
     };
 
     const handleNameChange = (event) =>{
@@ -102,9 +103,9 @@ function Signup({handleSignup,
                 </div>
 
 
-                {TopInputLabel("enter username", userName,handleUserNameChange,1)}
-                {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
-                {TopInputLabel("Enter your company name",company, handleCompanyNameChange,2)}
+                {TopInputLabel("enter username", signupUserName,handleUserNameChange,1)}
+                {TopInputLabel( "Enter your password",signupPass, handlePassWordChange,2,'password', showPasswordSignup, togglePasswordVisibility)}
+                {TopInputLabel("Enter your company name",companySignup, handleCompanyNameChange,2)}
                 {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
                 <input type="file"  onChange={onFileChange}/>
                 {InputButton(handleSignup, "Create Account")}
@@ -121,25 +122,25 @@ function Signup({handleSignup,
 }
 
 function Login({handleLogin,
-                   userName,setInputValue,
-                   userPass,setInputValue2,
-                   company,setInputValue3,
-                   showPassword,setShowPassword,handleSetAccount}){
+                   loginUserName,setUsernameLogin,
+                   loginPass,setPasswordLogin,
+                   companyLogin,setCompanyLogin,
+                   showPasswordLogin,setShowPasswordLogin,handleSetAccount}){
 
     const handleUserNameChange = (event) => {
-        setInputValue(event.target.value);
+        setUsernameLogin(event.target.value);
     };
     const handlePassWordChange = (event) => {
-        setInputValue2(event.target.value);
+        setPasswordLogin(event.target.value);
 
     };
     const handleCompanyNameChange = (event) => {
-        setInputValue3(event.target.value);
+        setCompanyLogin(event.target.value);
 
     };
 
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
+        setShowPasswordLogin(!showPasswordLogin);
     };
 
     return(
@@ -156,9 +157,9 @@ function Login({handleLogin,
 
 
 
-            {TopInputLabel( "enter username", userName,handleUserNameChange,1)}
-            {TopInputLabel( "Enter your password",userPass, handlePassWordChange,2,'password', showPassword, togglePasswordVisibility)}
-            {TopInputLabel( "Enter your company name",company, handleCompanyNameChange,3)}
+            {TopInputLabel( "enter username", loginUserName,handleUserNameChange,1)}
+            {TopInputLabel( "Enter your password",loginPass, handlePassWordChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
+            {TopInputLabel( "Enter your company name",companyLogin, handleCompanyNameChange,3)}
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
             </div>
@@ -202,28 +203,27 @@ function Home( {user, handleLoginTrue}) {
     }
 
     // Function to handle changes in the input field
-    const [userName, setInputValue] = useState('');
-    const [userPass, setInputValue2] = useState('');
-    const [company, setInputValue3] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    /*-------------login fields---------------*/
+    const [loginUserName, setUsernameLogin] = useState('');
+    const [showPasswordLogin, setShowPasswordLogin] = useState(false);
+    const [loginPass, setPasswordLogin] = useState('');
+    const [companyLogin, setCompanyLogin] = useState('');
+    /*----------------------------------------*/
+    /*-------------signup fields---------------*/
+    const [signupUserName, setInputValueSignup] = useState('');
+    const [showPasswordSignup, setShowPasswordSignup] = useState(false);
     const [name, setName] = useState('');
+    const [signupPass, setPasswordSignup] = useState('');
+    const [companySignup, setCompanySignup] = useState('');
+    /*----------------------------------------*/
 
-
-
-
-    const getEyeIconClassName = () => {
-        if (showPassword) {
-            return 'eye-icon active'; // Apply the 'active' class for the glowing effect
-        }
-        return 'eye-icon';
-    };
     const handleLogin = () => {
         // Construct the request data
 
         const queryParams = new URLSearchParams({
-            username: userName,
-            password: userPass,
-            companyName: company,
+            username: loginUserName,
+            password: loginPass,
+            companyName: companyLogin,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/authenticate?${queryParams}`;
@@ -255,9 +255,9 @@ function Home( {user, handleLoginTrue}) {
         console.log("hello")
         const queryParams = new URLSearchParams({
             name: name,
-            username: userName,
-            password: userPass,
-            companyName: company,
+            username: signupUserName,
+            password: signupPass,
+            companyName: companySignup,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/company?${queryParams}`;
@@ -296,16 +296,17 @@ function Home( {user, handleLoginTrue}) {
                         { !createAccount?
                             Login({
                                 handleLogin,
-                                userName,setInputValue,
-                                userPass,setInputValue2,
-                                company,setInputValue3,
-                                showPassword,setShowPassword,handleSetAccount}):
+                                loginUserName,setUsernameLogin,
+                                loginPass,setPasswordLogin,
+                                companyLogin,setCompanyLogin,
+                                showPasswordLogin,setShowPasswordLogin,handleSetAccount}):
                             Signup({
                                 handleSignup, name, setName,
-                                userName,setInputValue,
-                                userPass,setInputValue2,
-                                company,setInputValue3,
-                                showPassword,setShowPassword,handleSetAccount,onFileChange})}
+                                signupUserName,setInputValueSignup,
+                                signupPass,setPasswordSignup,
+                                companySignup,setCompanySignup,
+                                showPasswordSignup,setShowPasswordSignup,
+                                handleSetAccount,onFileChange})}
 
                     </div>
 
