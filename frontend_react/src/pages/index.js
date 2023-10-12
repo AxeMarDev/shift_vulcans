@@ -173,14 +173,14 @@ function Login({handleLogin,
         </div>
     )
 }
-/*function Congrats({ handleSetAccount, setCreateAccountSuccess, handleLogin}) {
+function Congrats({ handleSetAccount, setCreateAccountSuccess, goToDashboard}) {
     const handleButtonClick = () => {
         handleSetAccount();
         setCreateAccountSuccess(false);
       };
     const handleButtonClick2 = () => {
         setCreateAccountSuccess(false);
-        handleLogin();
+        goToDashboard();
       };
     return (
       <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
@@ -201,7 +201,7 @@ function Login({handleLogin,
         </button>
       </div>
     );
-  }*/
+  }
 function Home( {user, handleLoginTrue}) {
 
     // an idea for created a create account would be to add a state variable bounded to 'islogged' which would track if
@@ -211,7 +211,7 @@ function Home( {user, handleLoginTrue}) {
 
     // a state var that will track if the user wants to create account or log inm
     const [createAccount , setCreateAccount] = useState(false)
-    //const [createAccountSuccess , setCreateAccountSuccess] = useState(false);
+    const [createAccountSuccess , setCreateAccountSuccess] = useState(false);
 
     const [image, setImage] = useState("");
     const onFileChange = (e) => {
@@ -280,6 +280,39 @@ function Home( {user, handleLoginTrue}) {
                 console.error(error);
             });
     };
+    const goToDashboard = () => {
+        // Construct the request data
+
+        const queryParams = new URLSearchParams({
+            username: signupUserName,
+            password: signupPass,
+            companyName: companySignup,
+            // Add more parameters as needed
+        });
+        const url = `http://localhost:3000/authenticate?${queryParams}`;
+        // Make the API request
+        fetch(url, {
+            method: 'POST', // Change the method if needed (e.g., POST)
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then((data) => {
+                // Handle the API response data here
+                console.log(data);
+                handleLoginTrue( data)
+
+
+                // here
+                // You can also perform any other actions or state updates based on the response
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    };
     const handleSignup = () => {
         // Construct the request data
         console.log("hello")
@@ -305,10 +338,10 @@ function Home( {user, handleLoginTrue}) {
             .then((data) => {
                 // Handle the API response data here
                 // console.log(data);
-                handleLogin()
+                //handleLogin()
 
                 //setCreateAccount(false);
-                //setCreateAccountSuccess(true);
+                setCreateAccountSuccess(true);
 
                 
                 // here
@@ -328,21 +361,21 @@ function Home( {user, handleLoginTrue}) {
 
                 <div className={"  flex w-screen h-screen  justify-center grid content-center "}>
                     <div>
-                        {/*{createAccountSuccess ? (Congrats({handleSetAccount, setCreateAccountSuccess, handleLogin})):*/}
-                        {!createAccount ? 
+                        {createAccountSuccess ? (Congrats({handleSetAccount, setCreateAccountSuccess, goToDashboard})):
+                        !createAccount ? (
                             Login({
                                 handleLogin,
                                 loginUserName,setUsernameLogin,
                                 loginPass,setPasswordLogin,
                                 companyLogin,setCompanyLogin,
-                                showPasswordLogin,setShowPasswordLogin,handleSetAccount}):
+                                showPasswordLogin,setShowPasswordLogin,handleSetAccount})):(
                             Signup({
                                 handleSignup, name, setName,
                                 signupUserName,setInputValueSignup,
                                 signupPass,setPasswordSignup,
                                 companySignup,setCompanySignup,
                                 showPasswordSignup,setShowPasswordSignup,
-                                handleSetAccount,onFileChange})}
+                                handleSetAccount,onFileChange}))}
 
                     </div>
 
