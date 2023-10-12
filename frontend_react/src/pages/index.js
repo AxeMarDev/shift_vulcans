@@ -173,6 +173,35 @@ function Login({handleLogin,
         </div>
     )
 }
+/*function Congrats({ handleSetAccount, setCreateAccountSuccess, handleLogin}) {
+    const handleButtonClick = () => {
+        handleSetAccount();
+        setCreateAccountSuccess(false);
+      };
+    const handleButtonClick2 = () => {
+        setCreateAccountSuccess(false);
+        handleLogin();
+      };
+    return (
+      <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
+        <div className={"flex  content-center justify-center"}>
+          <div className={"mt-5 mb-5 w-40  "}>
+            <img src={ShiftLogo} className={"w-auto "} />
+          </div>
+        </div>
+        <div className={"flex mb-4 content-center justify-center"}>
+          <h1 className={"font-bold text-white"}>Congratulations!</h1>
+        </div>
+        <p className={"welcomeText"}>Your account has been created successfully.</p>
+        <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleButtonClick}>
+          Go to Login
+        </button>
+        <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleButtonClick2}>
+          Go to Dashboard
+        </button>
+      </div>
+    );
+  }*/
 function Home( {user, handleLoginTrue}) {
 
     // an idea for created a create account would be to add a state variable bounded to 'islogged' which would track if
@@ -182,6 +211,7 @@ function Home( {user, handleLoginTrue}) {
 
     // a state var that will track if the user wants to create account or log inm
     const [createAccount , setCreateAccount] = useState(false)
+    //const [createAccountSuccess , setCreateAccountSuccess] = useState(false);
 
     const [image, setImage] = useState("");
     const onFileChange = (e) => {
@@ -276,6 +306,11 @@ function Home( {user, handleLoginTrue}) {
                 // Handle the API response data here
                 // console.log(data);
                 handleLogin()
+
+                //setCreateAccount(false);
+                //setCreateAccountSuccess(true);
+
+                
                 // here
                 // You can also perform any other actions or state updates based on the response
             })
@@ -293,7 +328,8 @@ function Home( {user, handleLoginTrue}) {
 
                 <div className={"  flex w-screen h-screen  justify-center grid content-center "}>
                     <div>
-                        { !createAccount?
+                        {/*{createAccountSuccess ? (Congrats({handleSetAccount, setCreateAccountSuccess, handleLogin})):*/}
+                        {!createAccount ? 
                             Login({
                                 handleLogin,
                                 loginUserName,setUsernameLogin,
