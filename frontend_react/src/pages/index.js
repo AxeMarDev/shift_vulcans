@@ -16,19 +16,13 @@ function adminDash({user}){
 }
 
 function InputButton(handleWhat, text, passwordsMatch) {
-    if (text == 'Create Account') {
-        return (
-        <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat} disabled={!passwordsMatch}>
-            {text}
-        </button>
-        );
-    } else {
+
         return (
         <button className={"w-full bg-blue-700 h-12 rounded-lg mt-8 mb-2 text-white"} onClick={handleWhat}>
             {text}
         </button>
         );
-    }
+    
   }
 // do not pass as object-fixed in precious push
 function TopInputLabel(label,value, handleWhat, position, type, showPassword, togglePasswordVisibility){
@@ -71,42 +65,90 @@ function TopInputLabel(label,value, handleWhat, position, type, showPassword, to
 }
 
 function Signup({handleSignup,
-                    name, setName,
-                    signupUserName,setInputValueSignup,
-                    signupPass,setPasswordSignup,
-                    companySignup,setCompanySignup,
-                    showPasswordSignup,setShowPasswordSignup,
-                    passwordConfirmation,setPasswordConfirmation,
-                    showPasswordConfirmation,setShowPasswordConfirmation,
+                    credentials, SetCredentials,
                     passwordsMatch,setPasswordsMatch,
                     handleSetAccount, onFileChange}){
 
     const handleUserNameChange = (event) => {
-        setInputValueSignup(event.target.value);
+        SetCredentials({
+            name: credentials.name,
+            userName: (event.target.value),
+            password: credentials.password,
+            companyName: credentials.companyName,
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
     const handlePassWordChange = (event) => {
-        setPasswordSignup(event.target.value);
-
-    };
-    const handlePasswordConfirmationChange = (event) => {
-        setPasswordConfirmation(event.target.value);
-        const doPasswordsMatch = event.target.value === signupPass;
-        setPasswordsMatch(doPasswordsMatch);
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: (event.target.value),
+            companyName: credentials.companyName,
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
     const handleCompanyNameChange = (event) => {
-        setCompanySignup(event.target.value);
-
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: (event.target.value),
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
+    };
+    const handlePasswordConfirmationChange = (event) => {
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword:  (event.target.value),
+        })
     };
 
     const togglePasswordVisibility = () => {
-        setShowPasswordSignup(!showPasswordSignup);
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
+            showPassword: !credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
-    const togglePasswordVisibility2 = () => {
-        setShowPasswordConfirmation(!showPasswordConfirmation);
+    const togglecConfirmPasswordVisibility = () => {
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
+            showPassword: credentials.showPassword,
+            showConfirmPassword: !credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
-    const handleNameChange = (event) =>{
-        setName(event.target.value)
-    }
+
+    const handleNameChange = (event) => {
+        SetCredentials({
+            name: (event.target.value),
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
+    };
+
     return(
         <>
             <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
@@ -121,11 +163,11 @@ function Signup({handleSignup,
                 </div>
 
 
-                {TopInputLabel("enter username", signupUserName,handleUserNameChange,1)}
-                {TopInputLabel( "Enter your password",signupPass, handlePassWordChange,2,'password', showPasswordSignup, togglePasswordVisibility)}
-                {TopInputLabel("Confirm your password", passwordConfirmation, handlePasswordConfirmationChange, 3, 'password', showPasswordConfirmation, togglePasswordVisibility2)}
-                {TopInputLabel("Enter your company name",companySignup, handleCompanyNameChange,2)}
-                {TopInputLabel( "Enter your  name",name, handleNameChange,3)}
+                {TopInputLabel("enter username", credentials.userName,handleUserNameChange,1)}
+                {TopInputLabel( "Enter your password",credentials.password, handlePassWordChange,2,'password', credentials.showPassword, togglePasswordVisibility)}
+                {TopInputLabel("Confirm your password", credentials.confirmPassword, handlePasswordConfirmationChange, 3, 'password', credentials.showConfirmPassword,togglecConfirmPasswordVisibility)}
+                {TopInputLabel("Enter your company name",credentials.companyName, handleCompanyNameChange,2)}
+                {TopInputLabel( "Enter your  name",credentials.name, handleNameChange,3)}
                 <input type="file"  onChange={onFileChange}/>
                 {InputButton(handleSignup, "Create Account",passwordsMatch)}
 
@@ -141,21 +183,42 @@ function Signup({handleSignup,
 }
 
 function Login({handleLogin,
-                   loginUserName,setUsernameLogin,
-                   loginPass,setPasswordLogin,
-                   companyLogin,setCompanyLogin,
+                   credentials, SetCredentials,
                    showPasswordLogin,setShowPasswordLogin,handleSetAccount}){
 
+
     const handleUserNameChange = (event) => {
-        setUsernameLogin(event.target.value);
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: (event.target.value),
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
     const handlePassWordChange = (event) => {
-        setPasswordLogin(event.target.value);
-
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: (event.target.value),
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
     const handleCompanyNameChange = (event) => {
-        setCompanyLogin(event.target.value);
-
+        SetCredentials({
+            name: credentials.name,
+            userName: credentials.userName,
+            password: credentials.password,
+            companyName: (event.target.value),
+            showPassword: credentials.showPassword,
+            showConfirmPassword: credentials.showConfirmPassword,
+            confirmPassword: credentials.confirmPassword,
+        })
     };
 
     const togglePasswordVisibility = () => {
@@ -176,9 +239,9 @@ function Login({handleLogin,
 
 
 
-            {TopInputLabel( "enter username", loginUserName,handleUserNameChange,1)}
-            {TopInputLabel( "Enter your password",loginPass, handlePassWordChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
-            {TopInputLabel( "Enter your company name",companyLogin, handleCompanyNameChange,3)}
+            {TopInputLabel( "enter username", credentials.userName,handleUserNameChange,1)}
+            {TopInputLabel( "Enter your password",credentials.password, handlePassWordChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
+            {TopInputLabel( "Enter your company name",credentials.companyName, handleCompanyNameChange,3)}
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
             </div>
@@ -231,7 +294,6 @@ function Home( {user, handleLoginTrue}) {
     // a state var that will track if the user wants to create account or log inm
     const [createAccount , setCreateAccount] = useState(false)
     const [createAccountSuccess , setCreateAccountSuccess] = useState(false);
-
     const [image, setImage] = useState("");
     const onFileChange = (e) => {
         const file = e.target.files[0]
@@ -247,35 +309,30 @@ function Home( {user, handleLoginTrue}) {
         }
     };
 
+    const [ credentials={
+        name: "", userName: "", password: "",
+        companyName: "", showPassword: false, showConfirmPassword: false,
+        confirmPassword: "",}, SetCredentials] = useState()
+    const [passwordsMatch, setPasswordsMatch] = useState(false); // this can be handles by backend, by comparing strings and sending 400 code
+    const [newvalues, setNewValue] =useState({
+        name: "", userName: "", password: "",
+        companyName: "", showPassword: false, showConfirmPassword: false,
+        confirmPassword: "",})
+
     const handleSetAccount = () =>{
         setCreateAccount(!createAccount)
+        let currentValues = credentials;
+        SetCredentials(newvalues)
+        setNewValue(currentValues)
     }
-
-    // Function to handle changes in the input field
-    /*-------------login fields---------------*/
-    const [loginUserName, setUsernameLogin] = useState('');
-    const [showPasswordLogin, setShowPasswordLogin] = useState(false);
-    const [loginPass, setPasswordLogin] = useState('');
-    const [companyLogin, setCompanyLogin] = useState('');
-    /*----------------------------------------*/
-    /*-------------signup fields---------------*/
-    const [signupUserName, setInputValueSignup] = useState('');
-    const [showPasswordSignup, setShowPasswordSignup] = useState(false);
-    const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false);
-    const [passwordConfirmation, setPasswordConfirmation] = useState('');
-    const [name, setName] = useState('');
-    const [signupPass, setPasswordSignup] = useState('');
-    const [companySignup, setCompanySignup] = useState('');
-    const [passwordsMatch, setPasswordsMatch] = useState(false);
-    /*----------------------------------------*/
 
     const handleLogin = () => {
         // Construct the request data
 
         const queryParams = new URLSearchParams({
-            username: loginUserName,
-            password: loginPass,
-            companyName: companyLogin,
+            username: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/authenticate?${queryParams}`;
@@ -289,7 +346,6 @@ function Home( {user, handleLoginTrue}) {
             .then((response)=> response.json() )
             .then((data) => {
                 // Handle the API response data here
-                console.log(data);
                 handleLoginTrue( data)
 
 
@@ -306,9 +362,9 @@ function Home( {user, handleLoginTrue}) {
         // Construct the request data
 
         const queryParams = new URLSearchParams({
-            username: signupUserName,
-            password: signupPass,
-            companyName: companySignup,
+            username: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/authenticate?${queryParams}`;
@@ -321,29 +377,24 @@ function Home( {user, handleLoginTrue}) {
         })
             .then((response)=> response.json() )
             .then((data) => {
-                // Handle the API response data here
                 console.log(data);
                 handleLoginTrue( data)
-
-
-                // here
-                // You can also perform any other actions or state updates based on the response
             })
-
             .catch((error) => {
                 // Handle any errors here
                 console.error(error);
             });
     };
+
+
     const handleSignup = () => {
         // Construct the request data
-        console.log("hello")
+
         const queryParams = new URLSearchParams({
-            name: name,
-            username: signupUserName,
-            password: signupPass,
-            companyName: companySignup,
-            // Add more parameters as needed
+            name: credentials.name,
+            username: credentials.userName,
+            password: credentials.password,
+            companyName: credentials.companyName,
         });
         const url = `http://localhost:3000/company?${queryParams}`;
         // Make the API request
@@ -358,16 +409,9 @@ function Home( {user, handleLoginTrue}) {
         })
             .then((response)=> response.json() )
             .then((data) => {
-                // Handle the API response data here
-                // console.log(data);
-                //handleLogin()
+                console.log("here")
+                handleLogin()
 
-                //setCreateAccount(false);
-                setCreateAccountSuccess(true);
-
-                
-                // here
-                // You can also perform any other actions or state updates based on the response
             })
 
             .catch((error) => {
@@ -387,21 +431,13 @@ function Home( {user, handleLoginTrue}) {
                         !createAccount ? (
                             Login({
                                 handleLogin,
-                                loginUserName,setUsernameLogin,
-                                loginPass,setPasswordLogin,
-                                companyLogin,setCompanyLogin,
-                                showPasswordLogin,setShowPasswordLogin,handleSetAccount})):(
+                                credentials, SetCredentials,
+                                handleSetAccount})):(
                             Signup({
-                                handleSignup, name, setName,
-                                signupUserName,setInputValueSignup,
-                                signupPass,setPasswordSignup,
-                                companySignup,setCompanySignup,
-                                showPasswordSignup,setShowPasswordSignup,
-                                passwordConfirmation,setPasswordConfirmation,
-                                showPasswordConfirmation,setShowPasswordConfirmation,
+                                handleSignup,
+                                credentials, SetCredentials,
                                 passwordsMatch,setPasswordsMatch,
                                 handleSetAccount,onFileChange}))}
-
                     </div>
 
                 </div>
