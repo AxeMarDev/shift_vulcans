@@ -56,3 +56,9 @@ Thumbs.db
 shiftapi/tmp/
 
 BackEndAPI_rails/untitled/
+
+BackEndAPI_rails/shiftapi/tmp/cache/bootsnap/compile-cache-iseq/
+
+BackEndAPI_rails/shiftapi/tmp/cache/
+
+BackEndAPI_rails/shiftapi/tmp/
