@@ -47,7 +47,7 @@ function TopInputLabel(label,value, handleWhat, position, type, showPassword, to
             id="myInput"
             placeholder={label}
             value={value}
-            onChange={handleWhat}
+            onChange={(e)=>handleWhat(e,label)}
             style={{marginBottom: "8px"}}// space between fields
         />
         {type === 'password' && (
@@ -187,38 +187,8 @@ function Login({handleLogin,
                    showPasswordLogin,setShowPasswordLogin,handleSetAccount}){
 
 
-    const handleUserNameChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: (event.target.value),
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const handlePassWordChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: (event.target.value),
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const handleCompanyNameChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: (event.target.value),
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
+    const handleFieldChange = (event, stringIn) => {
+        SetCredentials({ ...credentials, [stringIn]: (event.target.value) })
     };
 
     const togglePasswordVisibility = () => {
@@ -236,12 +206,10 @@ function Login({handleLogin,
             <div className={"flex mb-4 content-center justify-center"}>
                 <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
-
-
-
-            {TopInputLabel( "enter username", credentials.userName,handleUserNameChange,1)}
-            {TopInputLabel( "Enter your password",credentials.password, handlePassWordChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
-            {TopInputLabel( "Enter your company name",credentials.companyName, handleCompanyNameChange,3)}
+            
+            {TopInputLabel( "userName", credentials.userName,handleFieldChange,1)}
+            {TopInputLabel( "password",credentials.password, handleFieldChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
+            {TopInputLabel( "companyName",credentials.companyName, handleFieldChange,3)}
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
             </div>
