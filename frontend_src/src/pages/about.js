@@ -16,12 +16,20 @@ function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee){
                 </div>
                 <div className={"employeeinfoStack"}>
                     <p className={"welcomeText"}> {employee.name}</p>
-                    <p className={"welcomeText"}> clocked in: {String(employee.clockin)}</p>
-                    <p className={"welcomeText"}> employee id: {String(employee.id)}</p>
-                    <p className={"welcomeText"}> password id: {String(employee.password)}</p>
+                    <p className={"welcomeText"}> Clocked In: {String(employee.clockin)}</p>
+                    <p className={"welcomeText"}> Employee Id: {String(employee.id)}</p>
+                    <p className={"welcomeText"}> Password Id: {String(employee.password)}</p>
+                    <p className={"welcomeText"}> Admin Status: {String(employee.admin)}</p>
                     {/* hanfleDestroyEmployee will handle an api call that will destroy an employee on the server*/}
-                    <button onClick={()=>handleDestoryEmployee(user, String(employee.id) )}> delete </button>
-                    <button onClick={()=>handleClockEmployee(user,String(employee.id) )}> clock </button>
+                    
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <button onClick={()=>handleDestoryEmployee(user, String(employee.id) )} style = {{color: 'white'}}> Delete Employee </button>
+                        {!employee.clockin ? (
+                            <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock In</button>
+                        ) : (
+                             <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock Out</button>
+                        )}                        
+                    </div>
                 </div>
 
 
