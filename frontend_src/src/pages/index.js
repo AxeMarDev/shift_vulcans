@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {queries} from "@testing-library/react";
 import eyeballIcon from '../Assets/eye-solid.png'; // Relative import path
 import ShiftLogo from './images/shiftlogo.png'
+import InputLabel from "../components/InputLabel";
 
 function adminDash({user}){
     return(
@@ -25,130 +26,17 @@ function InputButton(handleWhat, text, passwordsMatch) {
     
   }
 // do not pass as object-fixed in precious push
-function TopInputLabel(label,value, handleWhat, position, type, showPassword, togglePasswordVisibility){
 
-    const handleTogglePasswordVisibility = () => {
-        togglePasswordVisibility(!showPassword);
-    };
-
-    return(
-        <div className="password-container">
-        <input
-            className=
-            { position === 1?(
-                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-            ): position ===2 ? (
-                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-            ):(
-                "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-            ) }
-
-            type={type === 'password' && showPassword ? 'text' : type || 'text'} // Toggle input type based on showPassword
-            id="myInput"
-            placeholder={label}
-            value={value}
-            onChange={(e)=>handleWhat(e,label)}
-            style={{marginBottom: "8px"}}// space between fields
-        />
-        {type === 'password' && (
-            <img 
-                src={eyeballIcon}
-                alt="Show password"
-                className="absolute top-6 right-2 transform -translate-y-1/2 cursor-pointer"
-                style={{ width: '26px', height: '20px', filter: showPassword ? 'drop-shadow(0 0 5px rgba(65, 105, 225, 1.0))' : 'none'}} // Adjust the width and height here
-                onClick={handleTogglePasswordVisibility}
-                
-             />
-        )}
-        </div>
-    )
-}
 
 function Signup({handleSignup,
                     credentials, SetCredentials,
                     passwordsMatch,setPasswordsMatch,
                     handleSetAccount, onFileChange}){
 
-    const handleUserNameChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: (event.target.value),
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const handlePassWordChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: (event.target.value),
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const handleCompanyNameChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: (event.target.value),
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const handlePasswordConfirmationChange = (event) => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword:  (event.target.value),
-        })
-    };
-
-    const togglePasswordVisibility = () => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: !credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-    const togglecConfirmPasswordVisibility = () => {
-        SetCredentials({
-            name: credentials.name,
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: !credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-
-    const handleNameChange = (event) => {
-        SetCredentials({
-            name: (event.target.value),
-            userName: credentials.userName,
-            password: credentials.password,
-            companyName: credentials.companyName,
-            showPassword: credentials.showPassword,
-            showConfirmPassword: credentials.showConfirmPassword,
-            confirmPassword: credentials.confirmPassword,
-        })
-    };
-
+    const handleUpdateCredentials = (event, stringIn) =>{
+        SetCredentials( {...credentials, [stringIn]:event.target.value })
+    }
+    
     return(
         <>
             <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
@@ -158,25 +46,22 @@ function Signup({handleSignup,
                         <img src={ShiftLogo} className={"w-auto "}/>
                     </div>
                 </div>
+
                 <div className={"flex mb-4 content-center justify-center"}>
                     <h1 className={"font-bold text-white"}>Create an account</h1>
                 </div>
 
-
-                {TopInputLabel("enter username", credentials.userName,handleUserNameChange,1)}
-                {TopInputLabel( "Enter your password",credentials.password, handlePassWordChange,2,'password', credentials.showPassword, togglePasswordVisibility)}
-                {TopInputLabel("Confirm your password", credentials.confirmPassword, handlePasswordConfirmationChange, 3, 'password', credentials.showConfirmPassword,togglecConfirmPasswordVisibility)}
-                {TopInputLabel("Enter your company name",credentials.companyName, handleCompanyNameChange,2)}
-                {TopInputLabel( "Enter your  name",credentials.name, handleNameChange,3)}
+                <InputLabel label={"userName"} value={credentials.userName} handleWhat={handleUpdateCredentials} position={1} />
+                <InputLabel label={"password"} value={credentials.password} handleWhat={handleUpdateCredentials} position={2} type={'password'} />
+                <InputLabel label={"confirmPassword"} value={credentials.confirmPassword} handleWhat={handleUpdateCredentials} position={3} type={'password'}/>
+                <InputLabel label={"companyName"} value={credentials.companyName} handleWhat={handleUpdateCredentials} position={3} />
+                <InputLabel label={"name"} value={credentials.name} handleWhat={handleUpdateCredentials} position={3} />
                 <input type="file"  onChange={onFileChange}/>
                 {InputButton(handleSignup, "Create Account",passwordsMatch)}
-
 
                 <div className={"flex mb-4 content-center justify-center"}>
                     <button className="text-blue-500 " onClick={handleSetAccount}>Or Login</button>
                 </div>
-
-
             </div>
         </>
     )
@@ -206,10 +91,10 @@ function Login({handleLogin,
             <div className={"flex mb-4 content-center justify-center"}>
                 <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
-            
-            {TopInputLabel( "userName", credentials.userName,handleFieldChange,1)}
-            {TopInputLabel( "password",credentials.password, handleFieldChange,2,'password', showPasswordLogin, togglePasswordVisibility)}
-            {TopInputLabel( "companyName",credentials.companyName, handleFieldChange,3)}
+            <InputLabel label={"userName"} value={credentials.userName} handleWhat={handleFieldChange} position={1} />
+            <InputLabel label={"password"} value={credentials.password} handleWhat={handleFieldChange} position={2} type={'password'} showPassword={showPasswordLogin} togglePasswordVisibility={togglePasswordVisibility}/>
+            <InputLabel label={"companyName"} value={credentials.companyName} handleWhat={handleFieldChange} position={3} />
+
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
             </div>
