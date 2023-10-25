@@ -56,7 +56,11 @@ function Signup({handleSignup,
                 <InputLabel label={"confirmPassword"} value={credentials.confirmPassword} handleWhat={handleUpdateCredentials} position={3} type={'password'}/>
                 <InputLabel label={"companyName"} value={credentials.companyName} handleWhat={handleUpdateCredentials} position={3} />
                 <InputLabel label={"name"} value={credentials.name} handleWhat={handleUpdateCredentials} position={3} />
-                <input type="file"  onChange={onFileChange}/>
+                <label className="custom-file-upload bg-blue-700">
+                    <input type="file" onChange={onFileChange} accept="image/*" />
+                    Upload Profile Picture
+                </label>
+
                 {InputButton(handleSignup, "Create Account",passwordsMatch)}
 
                 <div className={"flex mb-4 content-center justify-center"}>
