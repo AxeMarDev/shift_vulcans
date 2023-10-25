@@ -165,14 +165,14 @@ function About({user,employees, handleEmployeeList}){
     const handleClockEmployee =(user,id)=>{
 
         const queryParams = new URLSearchParams({
-            adminname: user.username,
-            adminpassword: user.password,
+            action: 0,
             companyname: user.company,
         });
-        const url = `http://localhost:3000/companyemployee/${id}?${queryParams}`;
+        const url = `http://localhost:3000/employee/${id}?${queryParams}`;
         fetch(url, {
             method: 'PUT',
             headers: {
+                'Authorization': `${user.token}`,
                 'Content-Type': 'application/json',
             },
         })
