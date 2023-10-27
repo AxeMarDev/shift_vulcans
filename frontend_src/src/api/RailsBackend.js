@@ -32,22 +32,31 @@ class UserInfo{
 
 export default class RailsBackend {
 
-    userInfoLogin
-    userInfoSignup
-    controller
-
+    userInfo
+    userInfoSave
     constructor(options) {
-        this.userInfoLogin = new UserInfo(options)
-        this.userInfoSignup = new UserInfo(options)
+        if( options.totalInfo ){
+            this.userInfo = options.totalInfo
+            this.userInfoSave = options.saved
+        } else {
+            this.userInfo = new UserInfo(options)
+            if (options.saved ){
+                this.userInfoSave = options.saved
+            }else{
+                this.userInfoSave = new UserInfo()
+            }
+
+        }
+
     }
 
     getAuth = async() => {
         // Construct the request data
         let value
         const queryParams = new URLSearchParams({
-            username: this.userInfoLogin.userName,
-            password: this.userInfoLogin.password,
-            companyName: this.userInfoLogin.companyName,
+            username: this.userInfo.userName,
+            password: this.userInfo.password,
+            companyName: this.userInfo.companyName,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/authenticate?${queryParams}`;
@@ -77,10 +86,10 @@ export default class RailsBackend {
 
         let value
         const queryParams = new URLSearchParams({
-            name: this.userInfoSignup.name,
-            username: this.userInfoSignup.userName,
-            password: this.userInfoSignup.password,
-            companyName: this.userInfoSignup.companyName,
+            name: this.userInfo.name,
+            username: this.userInfo.userName,
+            password: this.userInfo.password,
+            companyName: this.userInfo.companyName,
         });
         const url = `http://localhost:3000/company?${queryParams}`;
         // Make the API request
@@ -90,7 +99,7 @@ export default class RailsBackend {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(
-                {userImage: this.userInfoSignup.image}
+                {userImage: this.userInfo.image}
             )
         })
             .then((response)=> response.json() )

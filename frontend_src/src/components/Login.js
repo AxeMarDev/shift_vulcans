@@ -8,13 +8,9 @@ const Login = ({railsBackend,setRailsBackend, handleLoginTrue, setChangeView }) 
 
 
     const handleFieldChange = (event, stringIn) => {
-        setRailsBackend( new RailsBackend( { ...railsBackend.userInfoLogin, ...railsBackend.controller , [stringIn]: (event.target.value) } ))
+        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo , saved: railsBackend.saved ,  [stringIn]: (event.target.value) } ))
     };
 
-    const handleChangeView = () => {
-        setRailsBackend( new RailsBackend( { ...railsBackend.userInfoLogin , logInOrSignUp: true } ))
-        console.log(railsBackend.controller.logInOrSignUp)
-    }
 
     const handleLogin = () => {
         railsBackend.getAuth().then( (response ) => (
@@ -33,9 +29,9 @@ const Login = ({railsBackend,setRailsBackend, handleLoginTrue, setChangeView }) 
             <div className={"flex mb-4 content-center justify-center"}>
                 <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
-            <InputLabel label={"userName"} value={railsBackend.userInfoLogin.userName} handleWhat={handleFieldChange} position={1} />
-            <InputLabel label={"password"} value={railsBackend.userInfoLogin.password} handleWhat={handleFieldChange} position={2} type={'password'} showPassword={railsBackend.userInfoLogin.showPassword} />
-            <InputLabel label={"companyName"} value={railsBackend.userInfoLogin.companyName} handleWhat={handleFieldChange} position={3} />
+            <InputLabel label={"userName"} value={railsBackend.userInfo.userName} handleWhat={handleFieldChange} position={1} />
+            <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2}  />
+            <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3} />
 
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
@@ -43,7 +39,10 @@ const Login = ({railsBackend,setRailsBackend, handleLoginTrue, setChangeView }) 
             <InputButton handleWhat={handleLogin} text={"login"}/>
 
             <div className={"flex mb-4 content-center justify-center"}>
-                <button className="text-blue-500 " onClick={()=>setChangeView(false) }>Or Create Account</button>
+                <button className="text-blue-500 " onClick={()=>{
+                    setRailsBackend( new RailsBackend( {  saved: railsBackend.userInfo, totalInfo: railsBackend.saved}  ))
+                    setChangeView(false)}
+                }>Or Create Account</button>
             </div>
 
         </div>
