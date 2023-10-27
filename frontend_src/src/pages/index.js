@@ -55,6 +55,7 @@ function Signup({handleSignup,
                 <InputLabel label={"password"} value={credentials.password} handleWhat={handleUpdateCredentials} position={2} type={'password'} />
                 <InputLabel label={"confirmPassword"} value={credentials.confirmPassword} handleWhat={handleUpdateCredentials} position={3} type={'password'}/>
                 <InputLabel label={"companyName"} value={credentials.companyName} handleWhat={handleUpdateCredentials} position={3} />
+                <InputLabel label={"Position"}  />
                 <InputLabel label={"name"} value={credentials.name} handleWhat={handleUpdateCredentials} position={3} />
                 <label className="custom-file-upload bg-blue-700">
                     <input type="file" onChange={onFileChange} accept="image/*" />
