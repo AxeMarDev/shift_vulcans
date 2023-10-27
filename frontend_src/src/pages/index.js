@@ -167,6 +167,7 @@ function Signup({handleSignup,
                 {TopInputLabel( "Enter your password",credentials.password, handlePassWordChange,2,'password', credentials.showPassword, togglePasswordVisibility)}
                 {TopInputLabel("Confirm your password", credentials.confirmPassword, handlePasswordConfirmationChange, 3, 'password', credentials.showConfirmPassword,togglecConfirmPasswordVisibility)}
                 {TopInputLabel("Enter your company name",credentials.companyName, handleCompanyNameChange,2)}
+                {TopInputLabel("Enter your Position",credentials.position)}
                 {TopInputLabel( "Enter your  name",credentials.name, handleNameChange,3)}
                 <input type="file"  onChange={onFileChange}/>
                 {InputButton(handleSignup, "Create Account",passwordsMatch)}
