@@ -12,14 +12,11 @@ function adminDash({user}){
 }
 
 function Home( {user, handleLoginTrue}) {
-
     if ( !user.isLoggedIn ) {
         return <SwitchViews handleLoginTrue={handleLoginTrue}/>
     } else {
         return adminDash({user})
     }
-};
-
-
+}
 
 export default Home;
