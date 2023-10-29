@@ -8,7 +8,7 @@ const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView})
 
     const onFileChange = (e) => {
         const file = e.target.files[0]
-        var value = ''
+        let value = ''
 
         if (file){
             const reader = new FileReader();
@@ -33,7 +33,7 @@ const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView})
     }
 
     return(
-        <>
+        <div>
             <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
 
                 <div className={"flex  content-center justify-center"}>
@@ -53,10 +53,9 @@ const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView})
                 <InputLabel label={"name"} value={railsBackend.userInfo.name} handleWhat={handleFieldChange} position={3} />
                 <label className="custom-file-upload bg-blue-700">
                     <input type="file" onChange={onFileChange} accept="image/*" />
-                    Upload Profile Picture
+                    <p>Upload Profile Picture</p>
                 </label>
-
-                <InputButton handleWhat={handleSignup} text={ "Create Account"} passwordsMatch={true}/>
+                <InputButton handleWhat={handleSignup} text={"Create Account"} passwordsMatch={true}/>
 
                 <div className={"flex mb-4 content-center justify-center"}>
                     <button className="text-blue-500 " onClick={()=>{
@@ -65,7 +64,7 @@ const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView})
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
