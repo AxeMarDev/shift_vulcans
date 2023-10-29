@@ -13,23 +13,24 @@ class EmployeeController < ApplicationController
   end
 
     def update
-      if(company = @current_user.company)
-        if(employeeTarget = company.employee_infos.find_by(id: params[:id])) # delete old employee data table
-          if(0 == params[:action].to_i)
+      if (company = @current_user.company)
+        if (employeeTarget = company.employee_infos.find_by(id: params[:id])) # delete old employee data table
+          if (params[:updateAction] == "clock")
             employeeTarget.clockin = !employeeTarget.clockin
             employeeTarget.save
-            render json: {message: "success"}
-          else 
-            render json: {message: "action (clockin) does not exsist"}
-
+            render json: { message: "successful clockin/clockout" }
+          elsif (params[:updateAction] == "admin")
+            employeeTarget.admin = !employeeTarget.admin
+            employeeTarget.save
+            render json: { message: "successful admin call" }
+          else
+            render json: { message: "action " + params[:action] + " does not exist" }
           end
-        else 
-          render json: {message: "employee target does not excist"}
-
+        else
+          render json: { message: "employee target does not exist" }
         end
-      else 
-        render json: {message: "your not part of company"}
-
+      else
+        render json: { message: "you're not part of the company" }
       end
     end
 

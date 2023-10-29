@@ -12,7 +12,7 @@ const TapInLabel = ({tapIn}) =>{
 
 }
 
-function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee){
+function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee, handleAdminChange){
     // this function will return a html layout for card elements in the employees view
     return (
         <div className={"bg-neutral-600 flex flex-col rounded-lg p-1"}>
@@ -39,6 +39,11 @@ function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee){
                         <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock In</button>
                     ) : (
                         <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock Out</button>
+                    )}
+                    {!employee.admin ? (
+                        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Give Admin</button>
+                    ) : (
+                        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Take Admin</button>
                     )}
                 </div>
             </div>
@@ -167,6 +172,35 @@ function About({user,employees, handleEmployeeList}){
         const queryParams = new URLSearchParams({
             action: 0,
             companyname: user.company,
+            updateAction: "clock",
+        });
+        const url = `http://localhost:3000/employee/${id}?${queryParams}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `${user.token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then((json) => {
+                // Handle the API response data here
+                console.log(json)
+                handleEmployeelist(user)
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    }
+
+    const handleAdminChange =(user,id)=>{
+
+        const queryParams = new URLSearchParams({
+            action: 1,
+            companyname: user.company,
+            updateAction: "admin",
         });
         const url = `http://localhost:3000/employee/${id}?${queryParams}`;
         fetch(url, {
@@ -210,7 +244,7 @@ function About({user,employees, handleEmployeeList}){
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2 bg-backGroundOfProjectAndPeopleTable">
                 {
                     employees.items.map((item) => (
-                        employeeCard(user,item, handleDestoryEmployee, handleClockEmployee)
+                        employeeCard(user,item, handleDestoryEmployee, handleClockEmployee, handleAdminChange)
                     ))
                 }
             </div>
