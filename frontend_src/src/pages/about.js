@@ -5,20 +5,29 @@ import { useState } from 'react';
 const TapInLabel = ({tapIn}) =>{
 
     return(
-        <div className={`w-28 h-auto ${ tapIn ? ("bg-red-600") : ("bg-emerald-600")} flex justify-center `}>
-            <p> { tapIn ? ("tapped in") : ("tapped out") }</p>
+        <div className={`w-28 h-auto ${ tapIn ? ("bg-emerald-600") : ("bg-red-600")} flex justify-center `}>
+            <p> { tapIn ? ("Tapped In") : ("Tapped Out") }</p>
         </div>
     )
-
 }
+const AdminLable = ({adminStatus}) =>{
+
+    return(
+        <div className={`w-28 h-auto ${ adminStatus ? ("bg-emerald-600") : ("bg-red-600")} flex justify-center `}>
+            <p> { adminStatus ? ("ADMIN") : ("USER") }</p>
+        </div>
+    )
+}
+
 
 function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee, handleAdminChange){
     // this function will return a html layout for card elements in the employees view
     return (
         <div className={"bg-neutral-600 flex flex-col rounded-lg p-1"}>
             <div>
-                <div className={"z-10"}>
-                    <TapInLabel tapIn={employee.clockin}/>
+                <div className={"z-10"} style={{ display: 'flex' }}>
+                    <TapInLabel tapIn={employee.clockin} />
+                    <AdminLable adminStatus={employee.admin}></AdminLable>
                 </div>
 
                 <div className={"z-0"}>
