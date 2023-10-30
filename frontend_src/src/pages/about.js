@@ -5,20 +5,29 @@ import { useState } from 'react';
 const TapInLabel = ({tapIn}) =>{
 
     return(
-        <div className={`w-28 h-auto ${ tapIn ? ("bg-red-600") : ("bg-emerald-600")} flex justify-center `}>
-            <p> { tapIn ? ("tapped in") : ("tapped out") }</p>
+        <div className={`w-28 h-auto ${ tapIn ? ("bg-emerald-600") : ("bg-red-600")} flex justify-center `}>
+            <p> { tapIn ? ("Tapped In") : ("Tapped Out") }</p>
         </div>
     )
+}
+const AdminLable = ({adminStatus}) =>{
 
+    return(
+        <div className={`w-28 h-auto ${ adminStatus ? ("bg-emerald-600") : ("bg-red-600")} flex justify-center `}>
+            <p> { adminStatus ? ("ADMIN") : ("USER") }</p>
+        </div>
+    )
 }
 
-function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee){
+
+function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee, handleAdminChange){
     // this function will return a html layout for card elements in the employees view
     return (
         <div className={"bg-neutral-600 flex flex-col rounded-lg p-1"}>
             <div>
-                <div className={"z-10"}>
-                    <TapInLabel tapIn={employee.clockin}/>
+                <div className={"z-10"} style={{ display: 'flex' }}>
+                    <TapInLabel tapIn={employee.clockin} />
+                    <AdminLable adminStatus={employee.admin}></AdminLable>
                 </div>
 
                 <div className={"z-0"}>
@@ -39,6 +48,11 @@ function employeeCard(user,employee,handleDestoryEmployee, handleClockEmployee){
                         <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock In</button>
                     ) : (
                         <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock Out</button>
+                    )}
+                    {!employee.admin ? (
+                        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Give Admin</button>
+                    ) : (
+                        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Take Admin</button>
                     )}
                 </div>
             </div>
@@ -167,6 +181,35 @@ function About({user,employees, handleEmployeeList}){
         const queryParams = new URLSearchParams({
             action: 0,
             companyname: user.company,
+            updateAction: "clock",
+        });
+        const url = `http://localhost:3000/employee/${id}?${queryParams}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `${user.token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response)=> response.json() )
+            .then((json) => {
+                // Handle the API response data here
+                console.log(json)
+                handleEmployeelist(user)
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+    }
+
+    const handleAdminChange =(user,id)=>{
+
+        const queryParams = new URLSearchParams({
+            action: 1,
+            companyname: user.company,
+            updateAction: "admin",
         });
         const url = `http://localhost:3000/employee/${id}?${queryParams}`;
         fetch(url, {
@@ -210,7 +253,7 @@ function About({user,employees, handleEmployeeList}){
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2 bg-backGroundOfProjectAndPeopleTable">
                 {
                     employees.items.map((item) => (
-                        employeeCard(user,item, handleDestoryEmployee, handleClockEmployee)
+                        employeeCard(user,item, handleDestoryEmployee, handleClockEmployee, handleAdminChange)
                     ))
                 }
             </div>
