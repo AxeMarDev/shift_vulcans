@@ -1,0 +1,5 @@
+Researchon where to deploy a mobile version of app / sites visited:
+https://stackoverflow.com/questions/45760350/how-to-make-react-app-preview-on-mobile
+
+Using aws to host our app:
+https://aws.amazon.com/ec2/
