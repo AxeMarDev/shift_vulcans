@@ -54,6 +54,7 @@ const closeBtnStyle = {
 };
 
 
+
 function employeeCard(user, employee, handleDestoryEmployee, handleClockEmployee, handleAdminChange) {
     // this function will return a html layout for card elements in the employees view
     return (
@@ -280,21 +281,57 @@ function About({ user, employees, handleEmployeeList }) {
         // The empty dependency array [] ensures that this effect runs only once when the component mounts
     }, []); // <- Empty dependency ar
 
+
     return (
         <>
             <div className="App">
-                <button onClick={openPopup}>Add Employee</button>
+                <button style={{ backgroundColor: 'white' }} onClick={openPopup}>
+                    Add Employee
+                </button>
                 {isPopupVisible && (
                     <div style={popupStyle}>
                         <div style={popupContentStyle}>
                             <button style={closeBtnStyle} onClick={closePopup}>
                                 Close
                             </button>
-                            <p className={"welcomeText"}> welcome to dashboard</p>
-                            <input type="file" onChange={onFileChange} />
-                            <input type={"text"} onChange={HandleNameOfEmployee} placeholder={"name"} value={nameOfEmployee} />
-                            <input type={"text"} onChange={HandlePasswordOfEmployee} placeholder={"password"} value={passwordOfEmployee} />
-                            <button onClick={() => handleAddEmployee(user, employees, image)}> Add Employee </button>
+                            <p className={"welcomeText"}>Welcome to dashboard</p>
+                            <input
+                                type="file"
+                                onChange={onFileChange}
+                                style={{
+                                    border: "1px solid #ccc",
+                                    padding: "10px",
+                                    margin: "10px 0",
+                                    width: "100%"
+                                }}
+                            />
+                            <input
+                                type={"text"}
+                                onChange={HandleNameOfEmployee}
+                                placeholder={"name"}
+                                value={nameOfEmployee}
+                                style={{
+                                    border: "1px solid #ccc",
+                                    padding: "10px",
+                                    margin: "10px 0",
+                                    width: "100%"
+                                }}
+                            />
+                            <input
+                                type={"text"}
+                                onChange={HandlePasswordOfEmployee}
+                                placeholder={"password"}
+                                value={passwordOfEmployee}
+                                style={{
+                                    border: "1px solid #ccc",
+                                    padding: "10px",
+                                    margin: "10px 0",
+                                    width: "100%"
+                                }}
+                            />
+                            <button onClick={() => handleAddEmployee(user, employees, image)}>
+                                Add Employee
+                            </button>
                         </div>
                     </div>
                 )}
