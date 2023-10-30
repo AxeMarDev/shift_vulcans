@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_042338) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_30_010406) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_042338) do
     t.integer "companies_id", null: false
     t.text "userImage"
     t.boolean "admin"
+    t.decimal "pay"
     t.index ["companies_id"], name: "index_employee_infos_on_companies_id"
   end
 
