@@ -2,7 +2,7 @@ import eyeballIcon from "../Assets/eye-solid.png";
 import React from "react";
 
 
-const InputLabel = ({label,value, handleWhat, position, type, showPassword, togglePasswordVisibility}) =>{
+const InputLabel = ({label,value, handleWhat, position, type, showPassword, togglePasswordVisibility,customPlaceholder}) =>{
 
 
     return(
@@ -19,7 +19,7 @@ const InputLabel = ({label,value, handleWhat, position, type, showPassword, togg
 
                 type={type === 'password' && showPassword ? 'text' : type || 'text'} // Toggle input type based on showPassword
                 id="myInput"
-                placeholder={label}
+                placeholder={customPlaceholder}
                 value={value}
                 onChange={(e)=> handleWhat(e,label)}
                 style={{marginBottom: "8px"}}// space between fields
