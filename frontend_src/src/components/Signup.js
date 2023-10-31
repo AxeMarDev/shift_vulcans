@@ -3,8 +3,9 @@ import ShiftLogo from "../pages/images/shiftlogo.png";
 import InputLabel from "./InputLabel";
 import InputButton from "./InputButton";
 import React from "react";
+import ActiveUser from "../api/ActiveUser";
 
-const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView}) =>{
+const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
 
     const onFileChange = (e) => {
         const file = e.target.files[0]
@@ -27,7 +28,12 @@ const Signup = ({railsBackend, setRailsBackend, handleLoginTrue, setChangeView})
         railsBackend.addCompanyWithUser().then( (response) => {
             console.log(response)
             railsBackend.getAuth().then( (response ) => (
-                handleLoginTrue( response)
+                setRailsBackend( new RailsBackend({ ...railsBackend, auth: new ActiveUser({
+                        isLoggedIn: true,
+                        token: response.token,
+                        username: response.employee.name,
+                        company: response.company.name,})
+                }))
             ))
         })
     }

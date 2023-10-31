@@ -3,18 +3,17 @@ import Signup from "./Signup";
 import React, {useState} from "react";
 import RailsBackend from "../api/RailsBackend";
 
-const SwicthViews = ({handleLoginTrue}) =>{
+const SwicthViews = ({backendAPI, setBackendAPI}) =>{
 
-    const [ railsBackend , setBackend ] = useState( new RailsBackend({}))
     const [ changeview , setChangeView] = useState( true)
 
     return(
         <div className={"  flex w-screen h-screen  justify-center grid content-center "}>
             <div>
                 {changeview ? (
-                    <Login railsBackend={railsBackend} setRailsBackend={setBackend} handleLoginTrue={handleLoginTrue} setChangeView={setChangeView}/>
+                    <Login railsBackend={backendAPI} setRailsBackend={setBackendAPI}  setChangeView={setChangeView}/>
                 ):(
-                    <Signup railsBackend={railsBackend} setRailsBackend={setBackend} handleLoginTrue={handleLoginTrue} setChangeView={setChangeView}/>
+                    <Signup railsBackend={backendAPI} setRailsBackend={setBackendAPI}  setChangeView={setChangeView}/>
                 )}
             </div>
         </div>

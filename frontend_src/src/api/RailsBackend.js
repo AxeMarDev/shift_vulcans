@@ -1,3 +1,4 @@
+import ActiveUser from "./ActiveUser";
 
 
 class UserInfo{
@@ -31,23 +32,21 @@ class UserInfo{
 
 
 export default class RailsBackend {
-
+    auth
     userInfo
-    userInfoSave
     constructor(options) {
-        if( options.totalInfo ){
-            this.userInfo = options.totalInfo
-            this.userInfoSave = options.saved
-        } else {
-            this.userInfo = new UserInfo(options)
-            if (options.saved ){
-                this.userInfoSave = options.saved
-            }else{
-                this.userInfoSave = new UserInfo()
+        if( options ){
+            if( options.totalInfo ){
+                this.userInfo = options.totalInfo
+                this.auth = options.auth || new ActiveUser()
+            } else {
+                this.auth =  options.auth || new ActiveUser()
+                this.userInfo = new UserInfo(options)
             }
-
+        } else {
+            this.auth = new ActiveUser()
+            this.userInfo = new UserInfo(options)
         }
-
     }
 
     getAuth = async() => {
@@ -114,5 +113,34 @@ export default class RailsBackend {
 
             return value
     }
+
+    getEmployees = async() => {
+
+        let value
+        const queryParams = new URLSearchParams({
+            companyname: this.auth.company,
+        });
+
+        const url = `http://localhost:3000/companyemployees?${queryParams}`;
+        await fetch(url, {
+            method: 'GET', // Change the method if needed (e.g., POST)
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.auth.token}`
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => {
+
+                value = json
+
+            })
+
+            .catch((error) => {
+                // Handle any errors here
+                console.error(error);
+            });
+        return value
+    };
 
 }
