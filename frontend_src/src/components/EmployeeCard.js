@@ -62,11 +62,6 @@ const EmployeeCard = ({employee, loadEmployeeList, auth}) =>{
                     )  }
                 </div>
             </div>
-
-
-
-
-
         </div>
     )
 }
