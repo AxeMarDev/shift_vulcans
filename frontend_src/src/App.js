@@ -4,9 +4,8 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route }
     from 'react-router-dom';
 import Home from './pages';
-import About from './pages/about';
+import Employees from './pages/Employees';
 import Admin from './pages/admin';
-import Login from './pages/login';
 import { useState } from 'react';
 import RailsBackend from "./api/RailsBackend";
 
@@ -33,9 +32,8 @@ function App() {
                     <div className={`w-full pl-80  h-auto`}>
                         <Routes>
                             <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
-                            <Route path='/about' element={<About backendAPI={backendAPI}/>} />
+                            <Route path='/employees' element={<Employees backendAPI={backendAPI}/>} />
                             <Route path='/admin' element={<Admin />} />
-                            <Route path='/login' element={<Login />} />
                         </Routes>
                     </div>
                 ): (

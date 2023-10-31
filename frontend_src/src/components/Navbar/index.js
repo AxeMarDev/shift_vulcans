@@ -17,7 +17,7 @@ const Navbar = ({user}) => {
                         </div>
                     </NavLink>
                     <div className={"menuButtonDic"}>
-                        <NavLink to="/about" activeStyle>
+                        <NavLink to="/employees" activeStyle>
                             <p>Employees</p>
                         </NavLink>
                         <NavLink to="/admin" activeStyle>
