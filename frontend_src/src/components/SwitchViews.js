@@ -1,7 +1,6 @@
 import Login from "./Login";
 import Signup from "./Signup";
 import React, {useState} from "react";
-import RailsBackend from "../api/RailsBackend";
 
 const SwicthViews = ({backendAPI, setBackendAPI}) =>{
 
