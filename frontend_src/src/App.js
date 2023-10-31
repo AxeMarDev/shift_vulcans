@@ -8,7 +8,7 @@ import About from './pages/about';
 import Admin from './pages/admin';
 import Login from './pages/login';
 import { useState } from 'react';
-
+import RailsBackend from "./api/RailsBackend";
 
 function sideBarAppear(user){
     return(
@@ -17,53 +17,23 @@ function sideBarAppear(user){
         </div>
     )
 }
+
 function App() {
-    // this will keep a state-driven array of employee
-    const [employees ={
-        items: [],
-    }, setEmployees] = useState();
 
-    // this will keep a state-driven information of admin user
-    const [user={
-        username: "no user active",
-        token: "no token",
-        company: "nocompany",
-        isLoggedIn: false,
-    }, setUser] = useState();
 
-    // this will update the state driver employee list information. Without this it would not update views
-    const handleEmployeeList = (data)=>{
-        setEmployees({
-            items: data,
-        });
-    }
-
-    // this will update the state drive for loggin admin in . Without this it would not update views
-    const handleLoginTrue = (data) => {
-        // Perform your login logic here and update the user state accordingly
-
-        //npmconsole.log(data.adminpassword);
-
-        setUser({
-            isLoggedIn: true,
-            token: data.token,
-            username: data.employee.name,
-            company: data.company.name,
-        });
-
-    };
+    const [backendAPI, setBackendAPI ] = useState( new RailsBackend() )
 
     return (
         <Router>
             <div className={"router"}>
 
-                { user.isLoggedIn ? ( sideBarAppear(user)) : (<></>) }
+                { backendAPI.auth.isLoggedIn ? ( sideBarAppear(backendAPI.auth)) : (<></>) }
 
-                { user.isLoggedIn ? (
+                { backendAPI.auth.isLoggedIn ? (
                     <div className={`w-full pl-80  h-auto`}>
                         <Routes>
-                            <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
-                            <Route path='/about' element={<About user={user} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
+                            <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
+                            <Route path='/about' element={<About backendAPI={backendAPI}/>} />
                             <Route path='/admin' element={<Admin />} />
                             <Route path='/login' element={<Login />} />
                         </Routes>
@@ -71,12 +41,11 @@ function App() {
                 ): (
                     <div className={`w-full pl-0 h-screen`}>
                         <Routes>
-                            <Route exact path='/' element={<Home user={user} handleLoginTrue={handleLoginTrue}/>} />
+                            <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI} />} />
                         </Routes>
                     </div>
                 )}
             </div>
-
         </Router>
     );
 }

@@ -19,10 +19,16 @@ class EmployeeController < ApplicationController
             employeeTarget.clockin = !employeeTarget.clockin
             employeeTarget.save
             render json: { message: "successful clockin/clockout" }
+
           elsif (params[:updateAction] == "admin")
-            employeeTarget.admin = !employeeTarget.admin
-            employeeTarget.save
-            render json: { message: "successful admin call" }
+            if employeeTarget.id == @current_user.id
+              render json: { message: "cannot toggle self" }
+            else
+              employeeTarget.admin = !employeeTarget.admin
+              employeeTarget.save
+              render json: { message: "successful admin call" }
+            end
+
           else
             render json: { message: "action " + params[:action] + " does not exist" }
           end

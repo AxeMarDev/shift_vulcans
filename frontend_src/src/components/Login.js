@@ -3,18 +3,24 @@ import ShiftLogo from "../pages/images/shiftlogo.png";
 import InputLabel from "./InputLabel";
 import InputButton from "./InputButton";
 import React from "react";
+import ActiveUser from "../api/ActiveUser";
 
-const Login = ({railsBackend,setRailsBackend, handleLoginTrue, setChangeView }) =>{
+const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
 
 
     const handleFieldChange = (event, stringIn) => {
-        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo , saved: railsBackend.saved ,  [stringIn]: (event.target.value) } ))
+        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo ,  ...railsBackend.auth , [stringIn]: (event.target.value) } ))
     };
 
 
     const handleLogin = () => {
         railsBackend.getAuth().then( (response ) => (
-            handleLoginTrue( response)
+            setRailsBackend( new RailsBackend({ ...railsBackend, auth: new ActiveUser({
+                    isLoggedIn: true,
+                    token: response.token,
+                    username: response.employee.name,
+                    company: response.company.name,})
+            }))
         ))
     }
 
