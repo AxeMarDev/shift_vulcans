@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import AddEmployeeModal from "../components/AddEmployeeModal";
+import Employee from "../api/Employee";
+import CardActionButton from "../components/CardActionButton";
 
 const TapInLabel = ({ tapIn }) => {
 
@@ -22,7 +24,9 @@ const AdminLable = ({ adminStatus }) => {
 
 
 
-function employeeCard( employee) {
+function employeeCard( employee, loadEmployeeList, auth) {
+
+    const targetEmployee = new Employee({auth: auth , target: employee})
 
     return (
         <div className={"bg-neutral-600 flex flex-col rounded-lg p-1"}>
@@ -43,32 +47,35 @@ function employeeCard( employee) {
             <div className={"employeeinfoStack"}>
                 <p className={"welcomeText"}> {employee.name}</p>
 
-                {/*<div style={{ display: 'flex', justifyContent: 'space-between' }}>*/}
-                {/*    <button onClick={() => handleDestoryEmployee(user, String(employee.id))} style={{ color: 'white' }}> Delete Employee </button>*/}
-                {/*    {!employee.clockin ? (*/}
-                {/*        <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock In</button>*/}
-                {/*    ) : (*/}
-                {/*        <button onClick={() => handleClockEmployee(user, String(employee.id))} style={{ color: 'white' }}>Clock Out</button>*/}
-                {/*    )}*/}
-                {/*    {!employee.admin ? (*/}
-                {/*        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Give Admin</button>*/}
-                {/*    ) : (*/}
-                {/*        <button onClick={() => handleAdminChange(user, String(employee.id))} style={{ color: 'white' }}>Take Admin</button>*/}
-                {/*    )}*/}
-                {/*</div>*/}
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+
+                    <CardActionButton action={targetEmployee.removeFromCompany} handler={loadEmployeeList} label={"remove"}/>
+                    <CardActionButton action={targetEmployee.toggleAdmin} handler={loadEmployeeList} label={"admin"}/>
+                    <CardActionButton action={targetEmployee.toggleClock} handler={loadEmployeeList} label={"clock"}/>
+
+                </div>
             </div>
         </div>
     )
 }
-function About({ backendAPI, setBackendAPI, employees, handleEmployeeList }) {
+function About({ backendAPI }) {
+
+    const [employees , setEmployees ] = useState({ items: [] })
 
     const [isPopupVisible, setPopupVisible] = useState(false);
 
 
+
+    const loadEmployeeList = () =>{
+        backendAPI.getEmployees().then( (employeesNew) => {
+            setEmployees({
+                items: employeesNew,
+            });
+        })
+    }
+
     useEffect(() => {
-        backendAPI.getEmployees().then( (employees) => (
-            handleEmployeeList(employees)
-        ))
+        loadEmployeeList()
     }, []); // <- Empty dependency ar
 
 
@@ -78,12 +85,12 @@ function About({ backendAPI, setBackendAPI, employees, handleEmployeeList }) {
                 <button style={{ backgroundColor: 'white' }} onClick={()=>setPopupVisible(true)}>
                     Add Employee
                 </button>
-                <AddEmployeeModal isVisible={isPopupVisible} handleVisible={()=>setPopupVisible(false)} backendAPI={backendAPI} />
+                <AddEmployeeModal isVisible={isPopupVisible} handleVisible={()=>setPopupVisible(false)} backendAPI={backendAPI} handleEmployeeList={()=>loadEmployeeList()} />
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 gap-2 p-2 bg-backGroundOfProjectAndPeopleTable">
                 {
                     employees.items.map((item) => (
-                        employeeCard(item)
+                        employeeCard(item , loadEmployeeList, backendAPI.auth)
                     ))
                 }
             </div>

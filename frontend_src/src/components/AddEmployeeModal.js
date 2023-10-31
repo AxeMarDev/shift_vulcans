@@ -35,17 +35,18 @@ const closeBtnStyle = {
     right: '10px',
 };
 
-const AddEmployeeModal = ({isVisible, handleVisible, backendAPI}) =>{
+const AddEmployeeModal = ({isVisible, handleVisible, backendAPI , handleEmployeeList}) =>{
 
-    const[ employee , setEmployee] = useState(new Employee({auth: backendAPI.auth}))
+    const[ employee , setEmployee] = useState(new Employee({auth: backendAPI.auth} ))
 
     const handleAddEmployee = ()=>{
-        employee.addToCompany()
-    }
-    const handleFieldChange = (event, stringIn) => {
-        setEmployee( new Employee( { ...employee, [stringIn]: event.target.value}))
-    }
-
+        console.log("handle add employee")
+        employee.addToCompany().then(handleEmployeeList)
+        handleVisible(false)
+     }
+    const handleFieldChange = ((event, stringIn) => {
+        setEmployee( new Employee( { ...employee.data, auth: employee.auth, [stringIn]:event.target.value }))
+    })
     const onFileChange = (e) => {
         const file = e.target.files[0]
         var value = ''
@@ -54,7 +55,7 @@ const AddEmployeeModal = ({isVisible, handleVisible, backendAPI}) =>{
             const reader = new FileReader();
             reader.onload = (e) => {
                 value = e.target.result.split(',')[1];
-                setEmployee( new Employee( { ...employee, image: value}))
+                setEmployee( new Employee( { ...employee.data, auth: employee.auth, image: value}))
             };
             reader.readAsDataURL(file);
         }
@@ -66,7 +67,9 @@ const AddEmployeeModal = ({isVisible, handleVisible, backendAPI}) =>{
                 <div style={popupContentStyle}>
                     <button style={closeBtnStyle} onClick={handleVisible}>
                         Close
+
                     </button>
+                    <p className={"text-black"}>{JSON.stringify(employee.auth)}</p>
                     <p className={"welcomeText"}>Welcome to dashboard</p>
                     <input
                         type="file"
@@ -102,7 +105,7 @@ const AddEmployeeModal = ({isVisible, handleVisible, backendAPI}) =>{
                             width: "100%"
                         }}
                     />
-                    <button onClick={() => handleAddEmployee}>
+                    <button onClick={()=>handleAddEmployee()}>
                         Add Employee
                     </button>
                 </div>

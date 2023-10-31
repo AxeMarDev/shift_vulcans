@@ -20,14 +20,8 @@ function sideBarAppear(user){
 
 function App() {
 
-    const [employees , setEmployees ] = useState({ items: [] })
-    const [backendAPI, setBackendAPI ] = useState( new RailsBackend() )
 
-    const handleEmployeeList = (data)=>{
-        setEmployees({
-            items: data,
-        });
-    }
+    const [backendAPI, setBackendAPI ] = useState( new RailsBackend() )
 
     return (
         <Router>
@@ -39,7 +33,7 @@ function App() {
                     <div className={`w-full pl-80  h-auto`}>
                         <Routes>
                             <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
-                            <Route path='/about' element={<About backendAPI={backendAPI} employees={employees} handleEmployeeList={handleEmployeeList}/>} />
+                            <Route path='/about' element={<About backendAPI={backendAPI}/>} />
                             <Route path='/admin' element={<Admin />} />
                             <Route path='/login' element={<Login />} />
                         </Routes>
