@@ -23,6 +23,9 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
             }))
         ))
     }
+    const handleTogglePasswordVisibility = () => {
+        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo ,  ...railsBackend.auth , showPassword: !railsBackend.userInfo.showPassword } ))
+    };
 
     return(
         <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
@@ -36,7 +39,7 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
                 <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
             <InputLabel label={"userName"} value={railsBackend.userInfo.userName} handleWhat={handleFieldChange} position={1} />
-            <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2}  />
+            <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2}   type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}/>
             <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3} />
 
             <div className={"flex mb-4 content-center justify-center"}>

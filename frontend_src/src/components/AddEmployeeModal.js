@@ -67,9 +67,7 @@ const AddEmployeeModal = ({isVisible, handleVisible, backendAPI , handleEmployee
                 <div style={popupContentStyle}>
                     <button style={closeBtnStyle} onClick={handleVisible}>
                         Close
-
                     </button>
-                    <p className={"text-black"}>{JSON.stringify(employee.auth)}</p>
                     <p className={"welcomeText"}>Welcome to dashboard</p>
                     <input
                         type="file"

@@ -38,6 +38,11 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
         })
     }
 
+    const handleTogglePasswordVisibility = () => {
+        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo ,  ...railsBackend.auth , showPassword: !railsBackend.userInfo.showPassword } ))
+    };
+
+
     return(
         <div>
             <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
@@ -54,8 +59,8 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
 
                 <InputLabel label={"userName"} value={railsBackend.userInfo.userName} handleWhat={handleFieldChange} position={1} />
                 <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2} />
-                <InputLabel label={"confirmPassword"} value={railsBackend.userInfo.confirmPassword} handleWhat={handleFieldChange} position={3} />
-                <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3} />
+                <InputLabel label={"confirmPassword"} value={railsBackend.userInfo.confirmPassword} handleWhat={handleFieldChange} position={3} type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}/>
+                <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3}  type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}/>
                 <InputLabel label={"name"} value={railsBackend.userInfo.name} handleWhat={handleFieldChange} position={3} />
                 <InputLabel label={"Position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3} />
                 <label className="custom-file-upload bg-blue-700">
