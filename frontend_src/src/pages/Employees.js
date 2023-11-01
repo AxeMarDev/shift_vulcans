@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import AddEmployeeModal from "../components/AddEmployeeModal";
-import MobileAddEmployeeModal from '../components/MobileAddEmployeeModal';
+import MobileAddEmployeeModal from '../components/MobileAddEmployeeModal.js';
 import EmployeeCard from "../components/EmployeeCard";
 
 function Employees({ backendAPI }) {
