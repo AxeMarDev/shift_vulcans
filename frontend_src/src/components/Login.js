@@ -19,7 +19,8 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
                     isLoggedIn: true,
                     token: response.token,
                     username: response.employee.name,
-                    company: response.company.name,})
+                    company: response.company.name,
+                    id: response.employee.id})
             }))
         ))
     }

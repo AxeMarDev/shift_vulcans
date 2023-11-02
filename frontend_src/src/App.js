@@ -18,8 +18,7 @@ function sideBarAppear(user){
 }
 
 function App() {
-
-
+    
     const [backendAPI, setBackendAPI ] = useState( new RailsBackend() )
 
     return (
