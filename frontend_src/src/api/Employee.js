@@ -4,15 +4,18 @@ class EmployeeData{
     employeePassword
     employeeName
     image
+    position
     constructor(options) {
         if(options){
             this.employeeName = options.employeeName || "empty"
             this.employeePassword = options.employeePassword ||  "empty"
             this.image = options.image ||  "empty"
+            this.position = options.position || "empty"
         } else{
             this.employeeName =  ""
             this.employeePassword =  ""
             this.image = ""
+            this.position = ""
         }
 
     }
@@ -42,6 +45,7 @@ export default class Employee{
                 companyname: this.auth.company,
                 employeename: this.data.employeeName,
                 employeepass: this.data.employeepass,
+                position: this.data.position
             }
         )
 

@@ -102,7 +102,21 @@ const AddEmployeeModal = ({isVisible, handleVisible, backendAPI , handleEmployee
                             margin: "10px 0",
                             width: "100%"
                         }}
+                    
+                        
                     />
+                    <input
+                        type={"text"}
+                        onChange={(e)=>handleFieldChange(e,"position")}
+                        placeholder={"position"}
+                        value={employee.data.position}
+                        style={{
+                            border: "1px solid #ccc",
+                            padding: "10px",
+                            margin: "10px 0",
+                            width: "100%"
+                        }}
+                    />    
                     <button onClick={()=>handleAddEmployee()}>
                         Add Employee
                     </button>

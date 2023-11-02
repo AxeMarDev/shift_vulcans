@@ -23,7 +23,8 @@ class CompanyController < ApplicationController
                                                   bio: "",
                                                   admin: true,
                                                   clockin: false,
-                                                  userImage: params[:userImage]))
+                                                  userImage: params[:userImage],
+                                                  position: params[:position]))
 
         if @employee.save
           @company.save
