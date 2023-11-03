@@ -4,6 +4,7 @@ export default class ActiveUser {
     token
     username
     company
+    id
 
     constructor(options) {
         if( options){
@@ -11,11 +12,13 @@ export default class ActiveUser {
             this.token= options.token || "no token"
             this.company= options.company || "nocompany"
             this.isLoggedIn= options.isLoggedIn || false
+            this.id = options.id || 0
         } else {
             this.username= "no user active"
             this.token="no token"
             this.company= "nocompany"
             this.isLoggedIn= false
+            this.id =  0
         }
     }
 

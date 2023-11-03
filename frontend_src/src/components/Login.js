@@ -19,7 +19,8 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
                     isLoggedIn: true,
                     token: response.token,
                     username: response.employee.name,
-                    company: response.company.name,})
+                    company: response.company.name,
+                    id: response.employee.id})
             }))
         ))
     }
@@ -38,9 +39,29 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
             <div className={"flex mb-4 content-center justify-center"}>
                 <h1 className={"font-bold text-white"}>Sign into account</h1>
             </div>
-            <InputLabel label={"userName"} value={railsBackend.userInfo.userName} handleWhat={handleFieldChange} position={1} />
-            <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2}   type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}/>
-            <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3} />
+            <InputLabel 
+                label={"userName"} 
+                value={railsBackend.userInfo.userName} 
+                handleWhat={handleFieldChange} 
+                position={1} 
+                customPlaceholder="Enter your username"
+            />
+            <InputLabel 
+                label={"password"} 
+                value={railsBackend.userInfo.password} 
+                handleWhat={handleFieldChange} 
+                position={2}   type={'password'} 
+                showPassword={railsBackend.userInfo.showPassword} 
+                togglePasswordVisibility={handleTogglePasswordVisibility} 
+                customPlaceholder="Enter your password"
+            />
+            <InputLabel 
+                label={"companyName"} 
+                value={railsBackend.userInfo.companyName} 
+                handleWhat={handleFieldChange} 
+                position={3} 
+                customPlaceholder="Enter your company"
+            />
 
             <div className={"flex mb-4 content-center justify-center"}>
                 <button href="#" className="text-blue-500 ">Forgot Password?</button>
