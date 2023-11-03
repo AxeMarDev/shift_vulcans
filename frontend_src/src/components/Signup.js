@@ -38,6 +38,10 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
             ))
         })
     }
+    const handleTogglePasswordVisibility = () => {
+        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo ,  ...railsBackend.auth , showPassword: !railsBackend.userInfo.showPassword } ))
+    };
+
 
     return(
         <div>
