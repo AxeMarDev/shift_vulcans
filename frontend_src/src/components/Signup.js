@@ -60,15 +60,15 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
                 <InputLabel label={"userName"} value={railsBackend.userInfo.userName} handleWhat={handleFieldChange} position={1}
                             customPlaceholder="Enter your username" />
                 <InputLabel label={"password"} value={railsBackend.userInfo.password} handleWhat={handleFieldChange} position={2} type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}
-                            customPlaceholder="Enter your password" />/>
+                            customPlaceholder="Enter your password" />
                 <InputLabel label={"confirmPassword"} value={railsBackend.userInfo.confirmPassword} handleWhat={handleFieldChange} position={3} type={'password'} showPassword={railsBackend.userInfo.showPassword} togglePasswordVisibility={handleTogglePasswordVisibility}
-                            customPlaceholder="confirm password" />/>
+                            customPlaceholder="confirm password" />
                 <InputLabel label={"companyName"} value={railsBackend.userInfo.companyName} handleWhat={handleFieldChange} position={3}
-                            customPlaceholder="Enter your company name" />/>
+                            customPlaceholder="Enter your company name" />
                 <InputLabel label={"name"} value={railsBackend.userInfo.name} handleWhat={handleFieldChange} position={3}
-                            customPlaceholder="Enter your name" />/>
+                            customPlaceholder="Enter your name" />
                 <InputLabel label={"Position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3}
-                            customPlaceholder="Enter your position" />/>
+                            customPlaceholder="Enter your position" />
                 <label className="custom-file-upload bg-blue-700">
                     <input type="file" onChange={onFileChange} accept="image/*" />
                     <p>Upload Profile Picture</p>
