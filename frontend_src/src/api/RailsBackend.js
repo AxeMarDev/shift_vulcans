@@ -7,7 +7,9 @@ class UserInfo{
     password
     companyName
     image
+    position
     showPassword
+   
 
     constructor(options) {
         if ( options ){
@@ -17,6 +19,7 @@ class UserInfo{
             this.companyName=options.companyName || ""
             this.image=options.image || ""
             this.showPassword =  options.showPassword || false
+            this.position = options.position || ""
         } else{
             this.name = ""
             this.userName = ""
@@ -24,6 +27,7 @@ class UserInfo{
             this.companyName=""
             this.image=  ""
             this.showPassword =   false
+            this.position= ""
         }
 
     }
@@ -56,6 +60,7 @@ export default class RailsBackend {
             username: this.userInfo.userName,
             password: this.userInfo.password,
             companyName: this.userInfo.companyName,
+            position: this.userInfo.position,
             // Add more parameters as needed
         });
         const url = `http://localhost:3000/authenticate?${queryParams}`;
@@ -89,6 +94,7 @@ export default class RailsBackend {
             username: this.userInfo.userName,
             password: this.userInfo.password,
             companyName: this.userInfo.companyName,
+            position: this.userInfo.position,
         });
         const url = `http://localhost:3000/company?${queryParams}`;
         // Make the API request

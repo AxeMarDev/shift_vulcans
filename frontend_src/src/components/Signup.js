@@ -39,11 +39,6 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
         })
     }
 
-    const handleTogglePasswordVisibility = () => {
-        setRailsBackend( new RailsBackend( { ...railsBackend.userInfo ,  ...railsBackend.auth , showPassword: !railsBackend.userInfo.showPassword } ))
-    };
-
-
     return(
         <div>
             <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>

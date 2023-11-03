@@ -36,7 +36,8 @@ class CompanyemployeesController < ApplicationController
                                   userImage: params[:userImage],
                                   clockin: false,
                                   bio: "empty",
-                                  admin: false)
+                                  admin: false,
+                                  position: params[:position])
 
         company.save
         render json: company.employee_infos
