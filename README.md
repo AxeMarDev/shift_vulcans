@@ -12,12 +12,12 @@ to improve effieceny and accuarcy of companies.
 
 # General Info #
 
-![Scheme](shiftlogo.png)
+![Scheme](readme_images/shiftlogo.png)
 
 # Technologies #
-![Scheme](awsExplained.png)
-![Scheme](jwtexplained.png)
-![Scheme](databasescheme.png)
+![Scheme](readme_images/awsExplained.png)
+![Scheme](readme_images/jwtexplained.png)
+![Scheme](readme_images/databasescheme.png)
 1. Aws route53,
 2. Aws ec2,
 3. nginx,
@@ -36,10 +36,16 @@ personal information stored by the company
 
 # Contributions #
 * Axell "worked on setting up technologies and connecting backend to frontend"
-    * created api calls from rails to react 
+  * Sprint 1
+    * created api calls from rails to react         
       * reference-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-32
     * created user auth using jwt
       * reference-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-57
+  * Sprint 2
+    * Refactored code base, focused on creating employee and company classes where instances can interact with backend api with method such as employee.addToCompany
+      * reference-https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/60
+    * Added submenu to employee tast that contains several actions such as delete, make admin and delete
+      * reference-https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/61
 * Austin "Worked mostly on frontend visuals and research about the technologies being used"
     * Created skeleton react app with basic funstion that we have been building off of
         * Referance URL - https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-34
@@ -51,6 +57,9 @@ personal information stored by the company
 # Next Steps #
 
 * Axell
-  * Create mobile view and add task to employees
+  * Sprint 1
+    * Create mobile view and add task to employees
+  * Sprint 2
+    * deploy on aws possibly using CD/CI
 * Austin
   * work on mobile view Clock in and out function
