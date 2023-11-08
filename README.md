@@ -47,12 +47,27 @@ personal information stored by the company
     * Added submenu to employee tast that contains several actions such as delete, make admin and delete
       * reference-https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/61
 * Austin "Worked mostly on frontend visuals and research about the technologies being used"
+* Sprint 1
     * Created skeleton react app with basic funstion that we have been building off of
         * Referance URL - https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-34
         "ABOVE IS MISLABELED ON GIT KRACKEN AND JUST SAYS SKELETON UI WITH MY NET ID"
     * Conducted research on multiple technologies
         * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-42
         * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-29
+* Sprint 2 
+    " Worked on backend attributes of employees and frontend features that utilizes them.
+    * Assign Employees a position/title
+       * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-93
+       * https://bitbucket.org/cs3398f23vulcans/shift/pull-requests/52
+    * Add Position field when creating Employee
+      * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-107
+      * https://bitbucket.org/cs3398f23vulcans/shift/pull-requests/64
+    * Have position show on employee card/Have position update when created
+      * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-80
+      * https://bitbucket.org/cs3398f23vulcans/shift/pull-requests/71
+    * Make a mobile view (work with Bailey)
+      * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-75
+      * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/72
 * Sprint 2
     * Bailey "Worked on the ability to change features on the front end and update them on the backend."
         * Fix up the Clock In or Clock out option when viewing Employees SCRUM-94
@@ -87,7 +102,11 @@ personal information stored by the company
   * Sprint 2
     * deploy on aws possibly using CD/CI
 * Austin
-  * work on mobile view Clock in and out function
+  * Sprint 1
+    * work on mobile view Clock in and out function
+  * Sprint 2
+    * Assist with mobile view
+    * Possibly work on additional features.
 * Michael 
   * Continue adding functions to settings tab
   * Work with team to start deploying on AWS
