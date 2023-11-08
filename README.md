@@ -90,3 +90,5 @@ personal information stored by the company
   * work on mobile view Clock in and out function
 * Michael 
   * Continue adding functions to settings tab
+  * Work with team to start deploying on AWS
+  * Fix runtime error that became present during demo
