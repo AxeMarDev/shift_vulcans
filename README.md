@@ -47,9 +47,28 @@ personal information stored by the company
     * Conducted research on multiple technologies
         * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-42
         * Reference URL-https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-29
+* Sprint 2
+    * Bailey "Worked on the ability to change features on the front end and update them on the backend."
+        * Fix up the Clock In or Clock out option when viewing Employees SCRUM-94
+          * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-94
+          * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/45
+        * Make Mobile View work with Austin SCRUM-89
+          * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-89
+          * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/72
+        * Add ClockIn/Clockout Fuctionality SCRUM-77
+          * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-77
+          * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/55
+        * Add modal or popup screen to employee list ( can be side bar on left side additional to the one on the right ) SCRUM-74
+          * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-74
+          * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/59
+        * Add Admin status change for employees SCRUM-101
+          * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-101
+          * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/56
+
 
 # Next Steps #
-
+* Bailey
+  * Continue to reformat everything into a mobile view
 * Axell
   * Create mobile view and add task to employees
 * Austin
