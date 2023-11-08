@@ -70,7 +70,13 @@ personal information stored by the company
         * Add Admin status change for employees SCRUM-101
           * https://cs3398f23vulcans.atlassian.net/jira/software/projects/SCRUM/boards/1?selectedIssue=SCRUM-101
           * https://bitbucket.org/cs3398f23vulcans/%7B015458a2-8e6c-47ed-83e7-54ca69705a83%7D/pull-requests/56
-
+          
+* Michael "Worked primarily on gettig a functiion settings tab acessible for users."
+  * Sprint 2
+    * Assigned employees a 'pay' attribute.
+      * https://bitbucket.org/cs3398f23vulcans/shift/pull-requests/57
+    * Started working on the 'Settings' tab in our app - give users the ability to change password
+      * https://bitbucket.org/cs3398f23vulcans/shift/pull-requests/70
 
 # Next Steps #
 * Bailey
@@ -82,3 +88,5 @@ personal information stored by the company
     * deploy on aws possibly using CD/CI
 * Austin
   * work on mobile view Clock in and out function
+* Michael 
+  * Continue adding functions to settings tab
