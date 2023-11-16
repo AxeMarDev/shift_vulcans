@@ -63,7 +63,7 @@ export default class RailsBackend {
             position: this.userInfo.position,
             // Add more parameters as needed
         });
-        const url = `http://localhost:3000/authenticate?${queryParams}`;
+        const url = `https://seashell-app-2txst.ondigitalocean.app/authenticate?${queryParams}`;
         // Make the API request
         await fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST)
@@ -96,7 +96,7 @@ export default class RailsBackend {
             companyName: this.userInfo.companyName,
             position: this.userInfo.position,
         });
-        const url = `http://localhost:3000/company?${queryParams}`;
+        const url = `https://seashell-app-2txst.ondigitalocean.app/company?${queryParams}`;
         // Make the API request
         await fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST)
