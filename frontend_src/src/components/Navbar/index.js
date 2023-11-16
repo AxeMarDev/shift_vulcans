@@ -23,6 +23,9 @@ const Navbar = ({ user }) => {
                     <NavLink to="/admin" activeStyle>
                         <p>Settings</p>
                     </NavLink>
+                    <NavLink to="/" activeStyle>
+                        <p>Sign Out</p>
+                    </NavLink>
                 </div>
             </div>
 
