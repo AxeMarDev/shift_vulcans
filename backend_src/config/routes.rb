@@ -12,24 +12,6 @@ Rails.application.routes.draw do
   post 'authenticate', to: 'authentication#create'
   resources :companyemployee, only:[ :update]
   resources :employee, only:[:index, :update]
-
-
   
-  # ADDING COLUMN TO TABLE
-  # rails g migration AddAgeToEmployees age:integer // will add age to Employees
-  # rails db:migrate
-
-  # mysql
-  # mysql.server start
-  # mysql.server stop
-  # SHOW DATABASES
-  # CREATE DATABASE
-
-  # shortcuts
-  # rails c
-  # rails db:migrate // do not migrate model that is present in database
-  # rails g controller <controllername> <arguments>
-  # rails g model <modelname> <types>
-
 
 end
