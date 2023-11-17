@@ -23,6 +23,12 @@ const Navbar = ({ user }) => {
                     <NavLink to="/admin" activeStyle>
                         <p>Settings</p>
                     </NavLink>
+                    <NavLink to="/calendar" activeStyle>
+                        <p>Calendar</p>
+                    </NavLink>
+                    <NavLink to="/paycalc" activeStyle>
+                        <p>Pay Calculator</p>
+                    </NavLink>
                     <NavLink to="/" activeStyle>
                         <p>Sign Out</p>
                     </NavLink>
