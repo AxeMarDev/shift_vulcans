@@ -67,7 +67,7 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
                             customPlaceholder="Enter your company name" />
                 <InputLabel label={"name"} value={railsBackend.userInfo.name} handleWhat={handleFieldChange} position={3}
                             customPlaceholder="Enter your name" />
-                <InputLabel label={"Position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3}
+                <InputLabel label={"position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3}
                             customPlaceholder="Enter your position" />
                 <label className="custom-file-upload bg-blue-700">
                     <input type="file" onChange={onFileChange} accept="image/*" />

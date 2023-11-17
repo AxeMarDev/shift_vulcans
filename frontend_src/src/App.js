@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route }
 import Home from './pages';
 import Employees from './pages/Employees';
 import Admin from './pages/admin';
+import Cal from './pages/calendar';
+import Calc from './pages/paycalc';
 import { useState } from 'react';
 import RailsBackend from "./api/RailsBackend";
 
@@ -33,6 +35,8 @@ function App() {
                             <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
                             <Route path='/employees' element={<Employees backendAPI={backendAPI}/>} />
                             <Route path='/admin' element={<Admin />} />
+                            <Route path='/calendar' element={<Cal />} />
+                            <Route path='/paycalc' element={<Calc />} />
                         </Routes>
                     </div>
                 ): (
