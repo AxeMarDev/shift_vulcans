@@ -12,9 +12,9 @@ const ShowCaseLabel = ({ condition, label1, label2, }) => {
 }
 
 
-const EditMenu = ({ targetEmployee, currentId, loadEmployeeList }) => {
-    return (
-        <div className={"bg-gray-600 h-auto w-auto p-2 flex flex-col"}>
+const EditMenu = ({targetEmployee,currentId, loadEmployeeList}) =>{
+    return(
+        <div className={"bg-gray-100 h-auto w-auto p-2 flex flex-col"}>
 
             {currentId !== targetEmployee.target.id && (
                 <CardActionButton action={targetEmployee.removeFromCompany} handler={loadEmployeeList} label={"remove"} />
@@ -40,7 +40,7 @@ const EmployeeCard = ({ employee, loadEmployeeList, auth }) => {
     const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <div className={"bg-[#404041] flex flex-col rounded-lg p-1"}>
+        <div className={"bg-white flex flex-col border-2 rounded-lg "}>
 
             <div className={"w-full h-60"}>
                 <div style={{
@@ -49,7 +49,7 @@ const EmployeeCard = ({ employee, loadEmployeeList, auth }) => {
                     backgroundSize: "cover",
                     width: `100%`,
                     height: `100%`
-                }} className={"p-1 rounded-lg bg-gray-900 "}>
+                }} className={"p-1 rounded-lg bg-gray-100 "}>
                     <div className={"z-10 justify-between"} style={{ display: 'flex' }}>
                         <ShowCaseLabel label2={"Clocked Out"} label1={"Clocked In"} condition={employee.clockin} />
                         <ShowCaseLabel label2={"User"} label1={"Admin"} condition={employee.admin} />
@@ -58,11 +58,11 @@ const EmployeeCard = ({ employee, loadEmployeeList, auth }) => {
             </div>
             <div className={"flex flex-row justify-between"}>
                 <div className={"flex flex-col"}>
-                    <p className={"font-bold text-lg"}>{employee.name}</p>
-                    <p className={"font-light text"}>{employee.position === null ? ("no position") : (employee.position)}</p>
+                    <p className={"font-bold text-lg text-black"}>{employee.name}</p>
+                    <p className={"font-light text-gray-500"}>{employee.position === null ? ("no position") :(employee.position)}</p>
                 </div>
-                <div className={"relative h-full grid content-center"}> <button className={"w-10 h-10 bg-gray-500 rounded-lg"} onClick={() => setShowMenu(!showMenu)}>i</button>
-                    {showMenu && (
+                <div className={"relative h-full grid content-center"}> <button className={"w-10 h-10 bg-white rounded-lg"} onClick={()=>setShowMenu(!showMenu)}>i</button>
+                    { showMenu && (
                         <div className="absolute -bottom-20 -left-4  ">
                             <EditMenu targetEmployee={targetEmployee} currentId={auth.id} loadEmployeeList={loadEmployeeList} />
                         </div>
