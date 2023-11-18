@@ -13,7 +13,6 @@ const ShowCaseLabel = ({ condition, label1, label2 }) => {
     )
 }
 
-
 const EditMenu = ({ targetEmployee, employee, loadEmployeeList }) => {
     return (
         <div className={"bg-gray-600 h-auto w-auto p-2 flex flex-col"}>

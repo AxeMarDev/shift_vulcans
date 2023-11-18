@@ -1,7 +1,7 @@
 .App {
   text-align: left;
   padding: 1rem;
-  background-color: #171717;
+  background-color: white;
 
 }
 
@@ -48,7 +48,7 @@
 }
 
 .employeePanelItem {
-  background-color: #282c34;
+  background-color: white;
 }
 .loginform{
   display: flex;
@@ -79,7 +79,7 @@
 .router{
   width: auto;
   display: flex;
-  background-color: #171717;
+  background-color: white;
 }
 h1,p{
   color: white;
