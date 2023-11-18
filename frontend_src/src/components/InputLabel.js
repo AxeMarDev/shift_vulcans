@@ -2,21 +2,13 @@ import eyeballIcon from "../Assets/eye-solid.png";
 import React from "react";
 
 
-const InputLabel = ({label,value, handleWhat, position, type, showPassword, togglePasswordVisibility,customPlaceholder}) =>{
+const InputLabel = ({label,value, handleWhat, type, showPassword, togglePasswordVisibility,customPlaceholder}) =>{
 
 
     return(
         <div className="password-container">
             <input
-                className=
-                    { position === 1?(
-                        "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-                    ): position ===2 ? (
-                        "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-                    ):(
-                        "w-full bg-loginField h-12 pl-2 text-white rounded-lg border-black border-solid border"
-                    ) }
-
+                className={"w-full bg-white h-12 pl-2 text-black rounded-lg border-2 "}
                 type={type === 'password' && showPassword ? 'text' : type || 'text'} // Toggle input type based on showPassword
                 id="myInput"
                 placeholder={customPlaceholder}

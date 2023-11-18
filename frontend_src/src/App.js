@@ -21,10 +21,9 @@ function App() {
 
     return (
         <Router>
-            <div className={"router"}>
+            <div className={screenDimension( "flex",  "flex-col"," flex-row ", 700).style}>
 
-
-                <Navbar user={backendAPI.auth}>
+                <Navbar user={backendAPI.auth} >
                     <NavButton title={"employee"} to={"/employees"} className={"text-black "} isActive={[activeButton,0]} changeActive={setActiveButton}/>
                     <NavButton title={"settings"} to={"/admin"} className={"text-black"} isActive={[activeButton,1]} changeActive={setActiveButton}/>
                     <NavButton title={"calendar"} to={"/calendar"} className={"text-black"} isActive={[activeButton,2]} changeActive={setActiveButton}/>
@@ -34,7 +33,7 @@ function App() {
 
                 { backendAPI.auth.isLoggedIn ? (
 
-                    <div className={ screenDimension( `w-full h-auto bg-white`,  "","" ).style }>
+                    <div className={ screenDimension( `w-full h-auto bg-white`,  "","",700 ).style }>
                         <Routes>
                             <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
                             <Route path='/employees' element={<Employees backendAPI={backendAPI}/>} />
