@@ -30,7 +30,15 @@ function Employees({ backendAPI }) {
     return (
         <>
             <div className="App">
-                <button style={{ backgroundColor: 'white' }} onClick={() => setPopupVisible(true)}>
+                <button
+                    style={{
+                        backgroundColor: 'white',
+                        borderRadius: '5px', // You can adjust the value to your preference
+                        padding: '5px 10px', // Add padding for better appearance
+                        cursor: 'pointer',
+                    }}
+                    onClick={() => setPopupVisible(true)}
+                >
                     Add Employee
                 </button>
                 {isMobile ? (
