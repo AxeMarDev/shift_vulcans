@@ -17,10 +17,17 @@ const ShowCaseLabel = ({ condition, label1, label2 }) => {
 const EditMenu = ({ targetEmployee, employee, loadEmployeeList }) => {
     return (
         <div className={"bg-gray-600 h-auto w-auto p-2 flex flex-col"}>
-
-            <CardActionButton action={targetEmployee.removeFromCompany} handler={loadEmployeeList} label={"remove"} />
-            <CardActionButton action={targetEmployee.toggleAdmin} handler={loadEmployeeList} label={"admin"} />
-            <CardActionButton action={targetEmployee.toggleClock} handler={loadEmployeeList} label={"clock"} />
+            <CardActionButton action={targetEmployee.removeFromCompany} handler={loadEmployeeList} label={"Remove Employee"} />
+            <CardActionButton
+                action={targetEmployee.toggleAdmin}
+                handler={loadEmployeeList}
+                label={employee.admin ? "Revoke Admin" : "Grant Admin"}
+            />
+            <CardActionButton
+                action={targetEmployee.toggleClock}
+                handler={loadEmployeeList}
+                label={employee.clockin === true ? "Clock Out" : "Clock In"}
+            />
 
         </div>
     )
@@ -43,8 +50,8 @@ const MobileEmployeeCard = ({ employee, loadEmployeeList, auth }) => {
                 }}
             >
                 <div className="z-10 flex justify-between">
-                    <ShowCaseLabel label2="tapped" label1="untapped" condition={employee.clockin} />
-                    <ShowCaseLabel label2="admin" label1="user" condition={employee.admin} />
+                    <ShowCaseLabel label2="Clocked Out" label1="Clocked In" condition={employee.clockin} />
+                    <ShowCaseLabel label2="User" label1="Admin" condition={employee.admin} />
                 </div>
             </div>
             <div className="flex flex-col mt-2">
