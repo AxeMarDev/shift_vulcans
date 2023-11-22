@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
+import './Cal.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages';
