@@ -7,7 +7,7 @@ const CardActionButton = ({label, action, handler}) =>{
 
             action().then(handler)
 
-        }} style={{ color: 'white' }}> {label}   </button>
+        }} style={{ color: 'black' }}> {label}   </button>
     )
 }
 export default CardActionButton

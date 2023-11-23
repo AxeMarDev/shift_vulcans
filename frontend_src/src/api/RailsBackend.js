@@ -63,7 +63,7 @@ export default class RailsBackend {
             position: this.userInfo.position,
             // Add more parameters as needed
         });
-        const url = `http://localhost:3000/authenticate?${queryParams}`;
+        const url = `http://24.144.83.37/authenticate?${queryParams}`;
         // Make the API request
         await fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST)
@@ -96,7 +96,7 @@ export default class RailsBackend {
             companyName: this.userInfo.companyName,
             position: this.userInfo.position,
         });
-        const url = `http://localhost:3000/company?${queryParams}`;
+        const url = `http://24.144.83.37/company?${queryParams}`;
         // Make the API request
         await fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST)
@@ -127,7 +127,7 @@ export default class RailsBackend {
             companyname: this.auth.company,
         });
 
-        const url = `http://localhost:3000/companyemployees?${queryParams}`;
+        const url = `http://24.144.83.37/companyemployees?${queryParams}`;
         await fetch(url, {
             method: 'GET', // Change the method if needed (e.g., POST)
             headers: {

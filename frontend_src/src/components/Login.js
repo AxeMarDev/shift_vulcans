@@ -4,6 +4,7 @@ import InputLabel from "./InputLabel";
 import InputButton from "./InputButton";
 import React from "react";
 import ActiveUser from "../api/ActiveUser";
+import screenDimension from "../api/ScreenDimensionStyling";
 
 const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
 
@@ -29,7 +30,7 @@ const Login = ({railsBackend,setRailsBackend, setChangeView }) =>{
     };
 
     return(
-        <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
+        <div className={ screenDimension( "pl-4 pr-4  rounded-2xl bg-white border-2 flex flex-col justify-center content-center", "w-screen h-screen","w-96",700).style }>
 
             <div className={"flex  content-center justify-center"}>
                 <div className={"mt-5 mb-5 w-40  "}>

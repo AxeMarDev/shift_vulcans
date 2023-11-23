@@ -4,6 +4,7 @@ import InputLabel from "./InputLabel";
 import InputButton from "./InputButton";
 import React from "react";
 import ActiveUser from "../api/ActiveUser";
+import screenDimension from "../api/ScreenDimensionStyling";
 
 const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
 
@@ -45,7 +46,7 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
 
     return(
         <div>
-            <div className={"pl-4 pr-4 w-96 rounded-2xl bg-loginHolder flex flex-col justify-center content-center"}>
+            <div className={ screenDimension( "pl-4 pr-4  rounded-2xl bg-white border-2 flex flex-col justify-center content-center", "w-screen h-screen","w-96",700).style}>
 
                 <div className={"flex  content-center justify-center"}>
                     <div className={"mt-5 mb-5 w-40  "}>
@@ -67,7 +68,7 @@ const Signup = ({railsBackend, setRailsBackend, setChangeView}) =>{
                             customPlaceholder="Enter your company name" />
                 <InputLabel label={"name"} value={railsBackend.userInfo.name} handleWhat={handleFieldChange} position={3}
                             customPlaceholder="Enter your name" />
-                <InputLabel label={"Position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3}
+                <InputLabel label={"position"} value={railsBackend.userInfo.position} handleWhat={handleFieldChange} position={3}
                             customPlaceholder="Enter your position" />
                 <label className="custom-file-upload bg-blue-700">
                     <input type="file" onChange={onFileChange} accept="image/*" />
