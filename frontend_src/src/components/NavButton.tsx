@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {NavLink} from "react-router-dom";
 import screenDimension from "../api/ScreenDimensionStyling";
 
@@ -26,7 +26,7 @@ const NavButton:React.FC<NavButtonProps> = ({title,to,className, isActive, chang
                     `${className} justify-start grid content-start p-2 rounded w-auto ${isActive[0] === isActive[1] ? ("bg-gray-300") : ("bg-white")}` ,
                     700).style
             }>
-                { !screenDimension( "","","",700).isDesktop ? ( title[0]): ( title )}
+                { !screenDimension( "","","",700).isDesktop && ( title )}
             </button>
         </NavLink>
     )
