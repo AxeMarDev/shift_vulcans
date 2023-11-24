@@ -1,37 +1,34 @@
 import React, {useEffect} from "react";
-import {NavLink, useNavigate} from "react-router-dom";
 import screenDimension from "../api/ScreenDimensionStyling";
 
+// @ts-ignore
+import RailsBackend  from "../api/RailsBackend"
+import {useNavigate} from "react-router-dom";
 
 
 interface NavButtonProps{
-    title:string
-    to:string
     className:string
     changeActive:any
     isActive:[number, number]
     action?:()=>void
+    setBackendAPI:any
 }
-const NavButton:React.FC<NavButtonProps> = ({title,to,className, isActive, changeActive}) =>{
-
-    const handleChange = () =>{
-        console.log(isActive[1])
-        changeActive(isActive[1])
-    }
+const SignOut:React.FC<NavButtonProps> = ({className, isActive,setBackendAPI}) =>{
+    const navigate = useNavigate();
 
     return(
-        <NavLink  to={`${to}` }  className={ screenDimension( "flex", "flex-row"," flex-col",700).style}>
-            <button onClick={handleChange} className={
+        <div className={ screenDimension( "flex", "flex-row"," flex-col",700).style}>
+            <button onClick={()=>{   setBackendAPI( new RailsBackend() );  navigate("/")     }} className={
                 screenDimension( "",
                     `w-20  h-20 grid rounded-2xl content-center ${isActive[0] === isActive[1] ? ("bg-gray-300") : ("bg-white")}`,
                     `${className} justify-start grid content-start p-2 rounded w-auto ${isActive[0] === isActive[1] ? ("bg-gray-300") : ("bg-white")}` ,
                     700).style
             }>
-                { !screenDimension( "","","",700).isDesktop && ( title )}
+                { !screenDimension( "","","",700).isDesktop ? ("S"): ( "signout" )}
             </button>
-        </NavLink>
+        </div>
     )
 }
 
 
-export default NavButton
+export default SignOut
