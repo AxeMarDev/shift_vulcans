@@ -105,8 +105,6 @@ const AddEmployeeModal = ({ isVisible, handleVisible, backendAPI, handleEmployee
                                     margin: "10px 0",
                                     width: "100%"
                                 }}
-
-
                             />
                             <input
                                 type={"text"}
