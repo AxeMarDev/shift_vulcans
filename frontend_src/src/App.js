@@ -11,6 +11,7 @@ import { useState } from 'react';
 import RailsBackend  from "./api/RailsBackend";
 import screenDimension from "./api/ScreenDimensionStyling";
 import NavButton from "./components/NavButton";
+import SignOut from "./components/SignOut";
 
 
 function App() {
@@ -52,12 +53,11 @@ function App() {
                         isActive={[activeButton,3]} 
                         changeActive={setActiveButton}
                     />
-                    <NavButton 
-                        title={"signout"} 
-                        to={"/"} 
+                    <SignOut
                         className={"text-black"} 
                         isActive={[activeButton,4]} 
                         changeActive={setActiveButton}
+                        setBackendAPI={setBackendAPI}
                     />
                 </Navbar>
 
@@ -65,7 +65,7 @@ function App() {
 
                     <div className={ screenDimension( `w-full h-auto bg-white`,  "","",700 ).style }>
                         <Routes>
-                            <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
+                            <Route path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI}/>} />
                             <Route path='/employees' element={<Employees backendAPI={backendAPI}/>} />
                             <Route path='/admin' element={<Admin />} />
                             <Route path='/calendar' element={<Cal />} />
@@ -75,7 +75,7 @@ function App() {
                 ): (
                     <div className={`w-full pl-0 h-screen`}>
                         <Routes>
-                            <Route exact path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI} />} />
+                            <Route path='/' element={<Home setBackendAPI={setBackendAPI} backendAPI={backendAPI} />} />
                         </Routes>
                     </div>
                 )}
