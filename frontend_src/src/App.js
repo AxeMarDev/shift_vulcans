@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import './Cal.css';
+
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages';
@@ -27,7 +27,7 @@ function App() {
                 <Navbar user={backendAPI.auth} >
                     <NavButton title={"employee"} to={"/employees"} className={"text-black "} isActive={[activeButton,0]} changeActive={setActiveButton}/>
                     <NavButton title={"settings"} to={"/admin"} className={"text-black"} isActive={[activeButton,1]} changeActive={setActiveButton}/>
-                    <NavButton title={"calendar"} to={"/calendar"} className={"text-black"} isActive={[activeButton,2]} changeActive={setActiveButton}/>
+                    <NavButton title={"Calendar"} to={"/calendar"} className={"text-black"} isActive={[activeButton,2]} changeActive={setActiveButton}/>
                     <NavButton title={"Pay Calculator"} to={"/paycalc"} className={"text-black"} isActive={[activeButton,3]} changeActive={setActiveButton}/>
                     <NavButton title={"signout"} to={"/"} className={"text-black"} isActive={[activeButton,4]} changeActive={setActiveButton}/>
                 </Navbar>
