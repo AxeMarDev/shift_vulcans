@@ -68,16 +68,21 @@ onEventResize = (data) => {
 
   this.setState({ events: updatedEvents });
 };
-  componentDidMount() {
-    const savedEvents = localStorage.getItem("calendarEvents");
-    if (savedEvents) {
-      this.setState({ events: JSON.parse(savedEvents) });
-    }
+componentDidMount() {
+  const savedEvents = localStorage.getItem("calendarEvents");
+  if (savedEvents) {
+    this.setState({ events: JSON.parse(savedEvents) });
   }
+}
 
-  componentDidUpdate() {
-    localStorage.setItem("calendarEvents", JSON.stringify(this.state.events));
+componentDidUpdate(prevProps, prevState) {
+  const { events } = this.state;
+
+  // Check if events in state have changed before updating local storage
+  if (prevState.events !== events) {
+    localStorage.setItem("calendarEvents", JSON.stringify(events));
   }
+}
 
 
   onEventDrop = (data) => {

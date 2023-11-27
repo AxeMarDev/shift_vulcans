@@ -1,0 +1,52 @@
+.pay-calculator-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .calculator-title {
+    color: #333;
+  }
+  
+  .input-container {
+    margin-bottom: 10px;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .calculate-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .calculate-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .result-container {
+    margin-top: 20px;
+  }
+  
+  .total-pay {
+    color: #4caf50;
+    margin-top: 0;
+  }
