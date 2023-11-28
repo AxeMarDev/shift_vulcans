@@ -107,7 +107,7 @@
     "skipLibCheck": true,
     /* Skip type checking all .d.ts files. */
     "lib": [
-      "es2016.full",
+      "es6",
       "dom"
     ]
   }
