@@ -27,7 +27,7 @@ const NavButton:React.FC<NavButtonProps> = ({title,to,className, isActive, chang
                     `${className} justify-start grid content-start p-2 rounded w-auto ${isActive[0] === isActive[1] ? ("bg-gray-300") : ("bg-white")}` ,
                     700).style
             }>
-                { !screenDimension( "","","",700).isDesktop && ( title )}
+                {title }
             </button>
         </NavLink>
     )
