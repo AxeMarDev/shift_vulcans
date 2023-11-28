@@ -49,7 +49,7 @@ export default class Employee{
             }
         )
 
-        const url = `http://24.144.83.37/companyemployees?${queryParams}`;
+        const url = `https://audiodivisions.com/companyemployees?${queryParams}`;
 
         await fetch(url, {
             method: 'POST', // Change the method if needed (e.g., POST),
@@ -77,7 +77,7 @@ export default class Employee{
             companyname: this.auth.company,
             updateAction: "admin",
         });
-        const url = `http://24.144.83.37/employee/${this.target.id}?${queryParams}`;
+        const url = `https://audiodivisions.com/employee/${this.target.id}?${queryParams}`;
         await fetch(url, {
             method: 'PUT',
             headers: {
@@ -101,7 +101,7 @@ export default class Employee{
             companyname: this.auth.company,
             updateAction: "clock",
         });
-        const url = `http://24.144.83.37/employee/${this.target.id}?${queryParams}`;
+        const url = `https://audiodivisions.com/employee/${this.target.id}?${queryParams}`;
         await fetch(url, {
             method: 'PUT',
             headers: {
@@ -127,7 +127,7 @@ export default class Employee{
         const queryParams = new URLSearchParams({
             companyname: this.auth.company,
         });
-        const url = `http://24.144.83.37/companyemployees/${this.target.id}?${queryParams}`;
+        const url = `https://audiodivisions.com/companyemployees/${this.target.id}?${queryParams}`;
         await fetch(url, {
             method: 'DELETE', // Change the method if needed (e.g., POST)
             headers: {
